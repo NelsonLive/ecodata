@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aviso Legal, Privacidad y Cookies — EcoData Natura S.L.P.</title>
+  <meta name="robots" content="noindex, follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%232C4A1E'/><text y='24' x='4' font-size='21'>🌿</text></svg>">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --g-dark:  #2C4A1E;
+      --g-light: #DCE4B8;
+      --orange:  #E8934A;
+      --muted:   #6B7F5E;
+      --bg-off:  #F7F9F2;
+      --shadow:  0 4px 24px rgba(44,74,30,.10);
+    }
+    body { font-family: 'Inter', sans-serif; color: #2D3523; background: #fff; line-height: 1.7; font-size: .96rem; }
+
+    /* ── TOP BAR ── */
+    .topbar { background: var(--g-dark); padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+    .topbar a.logo { display: flex; align-items: center; gap: .6rem; text-decoration: none; color: #fff; font-family: 'Jost', sans-serif; font-weight: 700; font-size: 1.05rem; }
+    .topbar a.logo span { font-size: .6rem; color: var(--g-light); text-transform: uppercase; letter-spacing: .1em; font-weight: 500; }
+    .btn-back { background: rgba(255,255,255,.12); color: #fff; border: 1px solid rgba(255,255,255,.25); padding: .45rem 1.1rem; border-radius: 100px; font-family: 'Jost', sans-serif; font-size: .78rem; font-weight: 600; text-decoration: none; transition: background .2s; }
+    .btn-back:hover { background: rgba(255,255,255,.22); }
+
+    /* ── SIDEBAR NAV ── */
+    .layout { display: flex; max-width: 1100px; margin: 0 auto; padding: 3rem 1.5rem 5rem; gap: 3rem; }
+    .sidebar { flex: 0 0 200px; position: sticky; top: 80px; align-self: flex-start; }
+    .sidebar nav { border-left: 2px solid var(--g-light); padding-left: 1.2rem; }
+    .sidebar nav a { display: block; color: var(--muted); text-decoration: none; font-family: 'Jost', sans-serif; font-size: .78rem; font-weight: 500; padding: .35rem 0; transition: color .2s; }
+    .sidebar nav a:hover, .sidebar nav a.active { color: var(--g-dark); font-weight: 700; }
+    .main { flex: 1; min-width: 0; }
+
+    /* ── SECTION ── */
+    .legal-section { padding-top: 1rem; margin-bottom: 4rem; scroll-margin-top: 90px; }
+    .legal-section h2 { font-family: 'Jost', sans-serif; font-size: 1.55rem; font-weight: 700; color: var(--g-dark); margin-bottom: 1.6rem; padding-bottom: .7rem; border-bottom: 2px solid var(--g-light); }
+    .legal-section h3 { font-family: 'Jost', sans-serif; font-size: 1rem; font-weight: 700; color: var(--g-dark); margin: 1.8rem 0 .6rem; }
+    .legal-section p { margin-bottom: .9rem; color: #3D4A35; }
+    .legal-section ul { margin: .5rem 0 .9rem 1.4rem; color: #3D4A35; }
+    .legal-section ul li { margin-bottom: .35rem; }
+    .legal-section table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; font-size: .87rem; }
+    .legal-section table th { background: var(--g-dark); color: #fff; font-family: 'Jost', sans-serif; font-weight: 600; padding: .6rem .9rem; text-align: left; }
+    .legal-section table td { padding: .6rem .9rem; border-bottom: 1px solid var(--g-light); vertical-align: top; }
+    .legal-section table tr:last-child td { border-bottom: none; }
+    .tag { display: inline-block; background: var(--g-light); color: var(--g-dark); font-family: 'Jost', sans-serif; font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; padding: .2rem .6rem; border-radius: 100px; margin-bottom: 1rem; }
+    .info-box { background: var(--bg-off); border-left: 3px solid var(--orange); border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin: 1rem 0 1.5rem; }
+    .info-box p { margin: 0; font-size: .88rem; }
+    a { color: var(--g-dark); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 680px) {
+      .sidebar { display: none; }
+      .layout { padding: 2rem 1.2rem 4rem; }
+      .legal-section h2 { font-size: 1.3rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <a href="index.html" class="logo">
+    <img src="logo/Logo V blanco.png" alt="EcoData Natura" height="32" onerror="this.style.display='none'">
+    EcoData Natura <span>S.L.P.</span>
+  </a>
+  <a href="index.html" class="btn-back">← Volver al inicio</a>
+</div>
+
+<div class="layout">
+  <aside class="sidebar">
+    <nav>
+      <a href="#aviso-legal">Aviso legal</a>
+      <a href="#privacidad">Política de privacidad</a>
+      <a href="#cookies">Política de cookies</a>
+    </nav>
+  </aside>
+
+  <main class="main">
+
+    <!-- ══ AVISO LEGAL ══════════════════════════ -->
+    <section id="aviso-legal" class="legal-section">
+      <span class="tag">Aviso legal</span>
+      <h2>Aviso Legal</h2>
+
+      <h3>1. Datos identificativos del titular</h3>
+      <p>En cumplimiento con el deber de información dispuesto en la Ley 34/2002 de Servicios de la Sociedad de la Información y del Comercio Electrónico (LSSI-CE), se facilitan los siguientes datos:</p>
+      <ul>
+        <li><strong>Denominación social:</strong> EcoData Natura S.L.P.</li>
+        <li><strong>Domicilio social:</strong> Espai CEEI, Lleida, Cataluña, España</li>
+        <li><strong>Correo electrónico:</strong> <a href="mailto:info@ecodatanatura.com">info@ecodatanatura.com</a></li>
+        <li><strong>Sitio web:</strong> <a href="https://www.ecodatanatura.com">www.ecodatanatura.com</a></li>
+        <li><strong>Actividad:</strong> Investigación aplicada y consultoría en gestión del uso público en espacios naturales protegidos</li>
+      </ul>
+
+      <h3>2. Objeto y ámbito de aplicación</h3>
+      <p>El presente Aviso Legal regula el uso del sitio web <strong>www.ecodatanatura.com</strong> (en adelante, el "Sitio Web"), cuyo titular es EcoData Natura S.L.P. El acceso y uso del Sitio Web implica la aceptación plena de las condiciones aquí recogidas.</p>
+
+      <h3>3. Propiedad intelectual e industrial</h3>
+      <p>Los contenidos del Sitio Web, incluyendo textos, imágenes, logotipos, diseño gráfico, código fuente y demás elementos, son titularidad de EcoData Natura S.L.P. o de terceros que han autorizado su uso, y están protegidos por la normativa española e internacional de propiedad intelectual e industrial.</p>
+      <p>Queda expresamente prohibida la reproducción, distribución, comunicación pública o transformación de dichos contenidos sin autorización expresa y por escrito del titular.</p>
+
+      <h3>4. Responsabilidad</h3>
+      <p>EcoData Natura S.L.P. no se hace responsable de los daños que pudieran derivarse del uso del Sitio Web ni de la información contenida en él, ni de las interrupciones del servicio debidas a causas ajenas a su voluntad.</p>
+      <p>Los enlaces externos a terceros son informativos; EcoData Natura S.L.P. no controla ni se responsabiliza de su contenido.</p>
+
+      <h3>5. Legislación aplicable y jurisdicción</h3>
+      <p>Las presentes condiciones se rigen por la legislación española. Para la resolución de cualquier controversia derivada del uso del Sitio Web, las partes se someten a los juzgados y tribunales de la ciudad de Lleida, con renuncia expresa a cualquier otro fuero que pudiera corresponderles.</p>
+    </section>
+
+    <!-- ══ POLÍTICA DE PRIVACIDAD ═══════════════ -->
+    <section id="privacidad" class="legal-section">
+      <span class="tag">Privacidad</span>
+      <h2>Política de Privacidad</h2>
+
+      <div class="info-box">
+        <p>EcoData Natura S.L.P. trata sus datos personales de conformidad con el <strong>Reglamento (UE) 2016/679 (RGPD)</strong> y la <strong>Ley Orgánica 3/2018 (LOPDGDD)</strong>.</p>
+      </div>
+
+      <h3>1. Responsable del tratamiento</h3>
+      <ul>
+        <li><strong>Responsable:</strong> EcoData Natura S.L.P.</li>
+        <li><strong>Domicilio:</strong> Espai CEEI, Lleida, Cataluña, España</li>
+        <li><strong>Contacto:</strong> <a href="mailto:info@ecodatanatura.com">info@ecodatanatura.com</a></li>
+      </ul>
+
+      <h3>2. Datos que se recogen</h3>
+      <p>A través del formulario de contacto del Sitio Web podemos recoger los siguientes datos personales:</p>
+      <ul>
+        <li>Nombre y apellidos</li>
+        <li>Organización o entidad</li>
+        <li>Dirección de correo electrónico</li>
+        <li>Mensaje enviado y servicio de interés</li>
+      </ul>
+
+      <h3>3. Finalidades y base jurídica del tratamiento</h3>
+      <table>
+        <tr><th>Finalidad</th><th>Base jurídica</th></tr>
+        <tr><td>Gestionar y responder consultas recibidas a través del formulario de contacto</td><td>Interés legítimo / Consentimiento del usuario (art. 6.1.a y 6.1.f RGPD)</td></tr>
+        <tr><td>Envío de información sobre servicios de EcoData Natura, si se solicita</td><td>Consentimiento explícito (art. 6.1.a RGPD)</td></tr>
+      </table>
+
+      <h3>4. Conservación de los datos</h3>
+      <p>Los datos se conservarán durante el tiempo necesario para atender la consulta y, una vez resuelta, durante el plazo de prescripción de posibles responsabilidades legales (máximo 5 años).</p>
+
+      <h3>5. Comunicación de datos a terceros</h3>
+      <p>EcoData Natura S.L.P. no cede datos personales a terceros, salvo obligación legal. El servicio de envío del formulario utiliza <strong>Formspree</strong>, un procesador de datos con sede en EE.UU., acogido a las garantías del RGPD mediante cláusulas contractuales estándar.</p>
+
+      <h3>6. Derechos del interesado</h3>
+      <p>Puede ejercer los derechos de acceso, rectificación, supresión, oposición, limitación del tratamiento y portabilidad de sus datos dirigiéndose por correo electrónico a <a href="mailto:info@ecodatanatura.com">info@ecodatanatura.com</a>, indicando el asunto "Derechos RGPD" y adjuntando copia de su documento de identidad.</p>
+      <p>Asimismo, tiene derecho a presentar una reclamación ante la <strong>Agencia Española de Protección de Datos</strong> (<a href="https://www.aepd.es" target="_blank" rel="noopener">www.aepd.es</a>).</p>
+
+      <h3>7. Seguridad</h3>
+      <p>EcoData Natura S.L.P. aplica las medidas técnicas y organizativas adecuadas para garantizar la seguridad de los datos personales y evitar su alteración, pérdida, tratamiento o acceso no autorizado.</p>
+    </section>
+
+    <!-- ══ POLÍTICA DE COOKIES ══════════════════ -->
+    <section id="cookies" class="legal-section">
+      <span class="tag">Cookies</span>
+      <h2>Política de Cookies</h2>
+
+      <div class="info-box">
+        <p>Este sitio web utiliza únicamente cookies técnicas necesarias para su funcionamiento. No se utilizan cookies de seguimiento ni publicidad.</p>
+      </div>
+
+      <h3>1. ¿Qué son las cookies?</h3>
+      <p>Las cookies son pequeños archivos de texto que los sitios web almacenan en el dispositivo del usuario con el fin de mejorar la experiencia de navegación, recordar preferencias o recopilar información estadística.</p>
+
+      <h3>2. Tipos de cookies utilizadas</h3>
+      <table>
+        <tr><th>Cookie</th><th>Tipo</th><th>Finalidad</th><th>Duración</th></tr>
+        <tr>
+          <td>Sesión de navegación</td>
+          <td>Técnica / esencial</td>
+          <td>Permite el correcto funcionamiento del sitio (preferencia de idioma)</td>
+          <td>Sesión</td>
+        </tr>
+        <tr>
+          <td>ArcGIS Embedded Map</td>
+          <td>Terceros (Esri)</td>
+          <td>Visualización del mapa interactivo de proyectos (UdL / ArcGIS Online)</td>
+          <td>Sesión / persistente</td>
+        </tr>
+      </table>
+
+      <h3>3. Cookies de terceros</h3>
+      <p>El mapa interactivo de proyectos está integrado mediante el servicio <strong>ArcGIS Embedded Maps</strong> (Esri Inc.). Este servicio puede establecer sus propias cookies. Para más información, consulte la <a href="https://www.esri.com/en-us/privacy/overview" target="_blank" rel="noopener">política de privacidad de Esri</a>.</p>
+
+      <h3>4. Gestión y desactivación de cookies</h3>
+      <p>Puede configurar su navegador para rechazar o eliminar cookies. A continuación encontrará instrucciones para los navegadores más habituales:</p>
+      <ul>
+        <li><a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener">Google Chrome</a></li>
+        <li><a href="https://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-sitios-web-rastrear-preferencias" target="_blank" rel="noopener">Mozilla Firefox</a></li>
+        <li><a href="https://support.apple.com/es-es/guide/safari/sfri11471/mac" target="_blank" rel="noopener">Safari</a></li>
+        <li><a href="https://support.microsoft.com/es-es/microsoft-edge/eliminar-cookies-en-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09" target="_blank" rel="noopener">Microsoft Edge</a></li>
+      </ul>
+      <p>La desactivación de cookies técnicas puede afectar al correcto funcionamiento del sitio.</p>
+
+      <h3>5. Actualización de la política</h3>
+      <p>EcoData Natura S.L.P. se reserva el derecho de modificar la presente Política de Cookies en cualquier momento. Los cambios serán publicados en esta misma página con indicación de la fecha de última actualización.</p>
+      <p><em>Última actualización: febrero de 2026.</em></p>
+    </section>
+
+  </main>
+</div>
+
+</body>
+</html>

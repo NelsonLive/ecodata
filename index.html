@@ -233,9 +233,9 @@
 
     /* ── GALLERY ─────────────────────────────────── */
     .gallery-section { background: var(--bg-off); padding: 0 0 5rem; }
-    .gallery-grid { display: grid; grid-template-columns: repeat(4,1fr); grid-template-rows: 200px 200px; gap: .6rem; margin-top: 2.5rem; border-radius: 18px; overflow: hidden; }
+    .gallery-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: 220px 220px; gap: .6rem; margin-top: 2.5rem; border-radius: 18px; overflow: hidden; }
     .gal-item { overflow: hidden; position: relative; }
-    .gal-item:first-child { grid-column: span 2; grid-row: span 2; }
+    .gal-item:first-child { grid-row: span 2; }
     .gal-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
     .gal-item:hover img { transform: scale(1.06); }
 
@@ -296,7 +296,7 @@
       .stats-grid { grid-template-columns: repeat(2,1fr); }
       .method-grid { grid-template-columns: 1fr; }
       .method-step::after { display: none; }
-      .gallery-grid { grid-template-columns: repeat(2,1fr); grid-template-rows: auto; }
+      .gallery-grid { grid-template-columns: repeat(2,1fr); grid-template-rows: 180px 180px; }
       .gal-item:first-child { grid-column: span 2; grid-row: span 1; }
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
       .form-row { grid-template-columns: 1fr; }
@@ -391,10 +391,10 @@
 
 <!-- ══ HERO ════════════════════════════════════════ -->
 <section id="inicio">
-  <div class="hero-slide active"><img src="Fotos-seleccionadas/Paisajes/IMG_1196.jpeg" alt="Paisaje natural"><div class="hero-overlay"></div></div>
-  <div class="hero-slide"><img src="Fotos-seleccionadas/Uso publico/Portada Siurana.jpg" alt="Siurana"><div class="hero-overlay"></div></div>
-  <div class="hero-slide"><img src="Fotos-seleccionadas/Trabajos de campo/Foto portada bonabé 2.jpg" alt="Bonabé"><div class="hero-overlay"></div></div>
-  <div class="hero-slide"><img src="Fotos-seleccionadas/Paisajes/Paisaje GR.jpeg" alt="GR"><div class="hero-overlay"></div></div>
+  <div class="hero-slide active"><img src="Fotos-seleccionadas/Paisajes/IMG_1196.webp" alt="Paisaje natural"><div class="hero-overlay"></div></div>
+  <div class="hero-slide"><img src="Fotos-seleccionadas/Uso publico/Portada Siurana.webp" alt="Siurana"><div class="hero-overlay"></div></div>
+  <div class="hero-slide"><img src="Fotos-seleccionadas/Trabajos de campo/Foto portada bonabé 2.webp" alt="Bonabé"><div class="hero-overlay"></div></div>
+  <div class="hero-slide"><img src="Fotos-seleccionadas/Señalización/Señalización.webp" alt="Señalización en espacios naturales"><div class="hero-overlay"></div></div>
 
   <div class="hero-content">
     <div class="hero-badge"><i class="fas fa-leaf"></i><span data-i18n="hero.badge">Spin-off INEFC · Lleida · 2024</span></div>
@@ -433,8 +433,8 @@
         </div>
       </div>
       <div class="about-visual fade-up">
-        <img src="Fotos-seleccionadas/Equipo/ESPARC 2024.jpg" alt="Equipo EcoData Natura en ESPARC 2024" class="about-img">
-        <img src="Fotos-seleccionadas/Espai CEEI.jpeg" alt="Sede EcoData Natura – Espai CEEI Lleida" class="about-img-sm">
+        <img src="Fotos-seleccionadas/Paisajes/1. Paisaje Cadi.webp" alt="Paisaje natural Cadí – EcoData Natura" class="about-img">
+        <img src="Fotos-seleccionadas/Espai CEEI.webp" alt="Sede EcoData Natura – Espai CEEI Lleida" class="about-img-sm">
       </div>
     </div>
   </div>
@@ -474,7 +474,7 @@
     </div>
     <div class="team-grid">
       <div class="team-card fade-up">
-        <img src="Fotos_Equip/Estela.png" alt="Dra. Estela Farías Torbidoni" class="team-photo">
+        <img src="Fotos_Equip/Estela.webp" alt="Dra. Estela Farías Torbidoni" class="team-photo">
         <div class="team-info">
           <div class="team-name">Dra. Estela I. Farías Torbidoni</div>
           <div class="team-role">Directora científica</div>
@@ -488,7 +488,7 @@
         </div>
       </div>
       <div class="team-card fade-up">
-        <img src="Fotos_Equip/Víctor_Dorado-removebg-preview.png" alt="Dr. Víctor Dorado Martínez" class="team-photo">
+        <img src="Fotos_Equip/Víctor_Dorado-removebg-preview.webp" alt="Dr. Víctor Dorado Martínez" class="team-photo">
         <div class="team-info">
           <div class="team-name">Dr. Víctor Dorado Martínez</div>
           <div class="team-role">Director ejecutivo</div>
@@ -502,7 +502,7 @@
         </div>
       </div>
       <div class="team-card fade-up">
-        <img src="Fotos_Equip/Serni_Morera-removebg-preview.png" alt="Dr. Serni Morera Carbonell" class="team-photo">
+        <img src="Fotos_Equip/Serni_Morera-removebg-preview.webp" alt="Dr. Serni Morera Carbonell" class="team-photo">
         <div class="team-info">
           <div class="team-name">Dr. Serni Morera Carbonell</div>
           <div class="team-role">Investigador senior</div>
@@ -516,7 +516,7 @@
         </div>
       </div>
       <div class="team-card fade-up">
-        <img src="Fotos_Equip/Ricardo-removebg-preview.png" alt="Dr. Ricardo Nogueira Mendes" class="team-photo">
+        <img src="Fotos_Equip/Ricardo-removebg-preview.webp" alt="Dr. Ricardo Nogueira Mendes" class="team-photo">
         <div class="team-info">
           <div class="team-name">Dr. Ricardo M. Nogueira Mendes</div>
           <div class="team-role">Investigador senior</div>
@@ -530,10 +530,10 @@
         </div>
       </div>
       <div class="team-card fade-up">
-        <img src="Fotos_Equip/Vanessa_da_Mota-removebg-preview.png" alt="Dra. Vanessa Teles da Mota" class="team-photo">
+        <img src="Fotos_Equip/Vanessa_da_Mota-removebg-preview.webp" alt="Dra. Vanessa Teles da Mota" class="team-photo">
         <div class="team-info">
           <div class="team-name">Dra. Vanessa Teles da Mota</div>
-          <div class="team-role">Investigadora</div>
+          <div class="team-role">Investigadora senior</div>
           <div class="team-bio">PhD con experiencia en gestión de espacios naturales y análisis del comportamiento de visitantes.</div>
           <div class="team-links">
             <a href="https://www.researchgate.net/profile/Vanessa-Teles-Da-Mota-2" target="_blank" class="tl tl-rg" title="ResearchGate"><i class="fas fa-graduation-cap"></i></a>
@@ -544,7 +544,36 @@
         </div>
       </div>
       <div class="team-card fade-up">
-        <img src="Fotos_Equip/Maria_Ulloa-removebg-preview.png" alt="Dra. Maira Ulloa Hernández" class="team-photo">
+        <img src="Fotos_Equip/Marcos Vinícius.webp" alt="Marcos Vinícius Ribeiro de Castro Simão" class="team-photo">
+        <div class="team-info">
+          <div class="team-name">Marcos V. Ribeiro de Castro Simão</div>
+          <div class="team-role">Investigador senior</div>
+          <div class="team-bio">Profesor de Ingeniería Forestal (IFAM, Brasil). Máster en Ciencias de Bosques Tropicales (INPA). Doctorando en la Universitat de Lleida.</div>
+          <div class="team-links">
+            <a href="https://www.researchgate.net/profile/Marcos-Vinicius-Simao" target="_blank" class="tl tl-rg" title="ResearchGate"><i class="fas fa-graduation-cap"></i></a>
+            <a href="https://orcid.org/0000-0002-8738-6350" target="_blank" class="tl tl-oc" title="ORCID"><i class="fab fa-orcid"></i></a>
+            <a href="https://scholar.google.es/citations?user=hodxVO4AAAAJ&hl=es&oi=ao" target="_blank" class="tl tl-gs" title="Google Scholar"><i class="fab fa-google"></i></a>
+            <a href="https://www.scopus.com/authid/detail.uri?authorId=59682707900" target="_blank" class="tl tl-sc" title="Scopus"></a>
+            <a href="http://lattes.cnpq.br/0371932049521169" target="_blank" class="tl tl-lt" title="Curriculum Lattes"></a>
+          </div>
+        </div>
+      </div>
+      <div class="team-card fade-up">
+        <img src="Fotos_Equip/Carlos_Pereira-removebg-preview.webp" alt="Dr. Carlos Pereira da Silva" class="team-photo">
+        <div class="team-info">
+          <div class="team-name">Dr. Carlos Pereira da Silva</div>
+          <div class="team-role">Investigador senior</div>
+          <div class="team-bio">PhD en Geografía. Profesor Associado NOVAFCSH, Universidade Nova de Lisboa, Portugal.</div>
+          <div class="team-links">
+            <a href="https://www.researchgate.net/profile/Carlos_Silva59" target="_blank" class="tl tl-rg" title="ResearchGate"><i class="fas fa-graduation-cap"></i></a>
+            <a href="https://orcid.org/0000-0003-1613-4321" target="_blank" class="tl tl-oc" title="ORCID"><i class="fab fa-orcid"></i></a>
+            <a href="https://scholar.google.pt/citations?user=4DaobpAAAAAJ&hl=en" target="_blank" class="tl tl-gs" title="Google Scholar"><i class="fab fa-google"></i></a>
+            <a href="https://www.linkedin.com/in/carlos-pereira-da-silva-32497470/" target="_blank" class="tl tl-li" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="team-card fade-up">
+        <img src="Fotos_Equip/Maria_Ulloa-removebg-preview.webp" alt="Dra. Maira Ulloa Hernández" class="team-photo">
         <div class="team-info">
           <div class="team-name">Dra. Maira Ulloa Hernández</div>
           <div class="team-role">Investigadora</div>
@@ -558,7 +587,7 @@
         </div>
       </div>
       <div class="team-card fade-up">
-        <img src="Fotos_Equip/Fotografia_Sara-removebg-preview.png" alt="Sara Hamza Mayora" class="team-photo">
+        <img src="Fotos_Equip/Fotografia_Sara-removebg-preview.webp" alt="Sara Hamza Mayora" class="team-photo">
         <div class="team-info">
           <div class="team-name">Sara Hamza Mayora</div>
           <div class="team-role">Investigadora predoctoral</div>
@@ -572,50 +601,21 @@
         </div>
       </div>
       <div class="team-card fade-up">
-        <img src="Fotos_Equip/Agustín_Cebe-removebg-preview.png" alt="Agustín Cebe" class="team-photo">
+        <img src="Fotos_Equip/Agustín_Cebe-removebg-preview.webp" alt="Agustín Cebe" class="team-photo">
         <div class="team-info">
           <div class="team-name">Agustín Cebe</div>
-          <div class="team-role">Investigador</div>
+          <div class="team-role">Investigador predoctoral</div>
           <div class="team-bio">Especialista en análisis territorial y gestión de espacios naturales protegidos.</div>
           <div class="team-links"></div>
         </div>
       </div>
       <div class="team-card fade-up">
-        <img src="Fotos_Equip/Ilargi-removebg-preview.png" alt="Ilargi López González" class="team-photo">
+        <img src="Fotos_Equip/Ilargi-removebg-preview.webp" alt="Ilargi López González" class="team-photo">
         <div class="team-info">
           <div class="team-name">Ilargi López González</div>
-          <div class="team-role">Investigadora</div>
+          <div class="team-role">Colaboradora</div>
           <div class="team-bio">Investigadora en el ámbito del uso público en espacios naturales protegidos.</div>
           <div class="team-links"></div>
-        </div>
-      </div>
-      <div class="team-card fade-up">
-        <img src="Fotos_Equip/Marcos Vinícius.png" alt="Marcos Vinícius Ribeiro de Castro Simão" class="team-photo">
-        <div class="team-info">
-          <div class="team-name">Marcos V. Ribeiro de Castro Simão</div>
-          <div class="team-role">Doctorando / Colaborador científico</div>
-          <div class="team-bio">Profesor de Ingeniería Forestal (IFAM, Brasil). Máster en Ciencias de Bosques Tropicales (INPA). Doctorando en la Universitat de Lleida.</div>
-          <div class="team-links">
-            <a href="https://www.researchgate.net/profile/Marcos-Vinicius-Simao" target="_blank" class="tl tl-rg" title="ResearchGate"><i class="fas fa-graduation-cap"></i></a>
-            <a href="https://orcid.org/0000-0002-8738-6350" target="_blank" class="tl tl-oc" title="ORCID"><i class="fab fa-orcid"></i></a>
-            <a href="https://scholar.google.es/citations?user=hodxVO4AAAAJ&hl=es&oi=ao" target="_blank" class="tl tl-gs" title="Google Scholar"><i class="fab fa-google"></i></a>
-            <a href="https://www.scopus.com/authid/detail.uri?authorId=59682707900" target="_blank" class="tl tl-sc" title="Scopus"></a>
-            <a href="http://lattes.cnpq.br/0371932049521169" target="_blank" class="tl tl-lt" title="Curriculum Lattes"></a>
-          </div>
-        </div>
-      </div>
-      <div class="team-card fade-up">
-        <img src="Fotos_Equip/Carlos_Pereira-removebg-preview.png" alt="Dr. Carlos Pereira da Silva" class="team-photo">
-        <div class="team-info">
-          <div class="team-name">Dr. Carlos Pereira da Silva</div>
-          <div class="team-role">Colaborador científico</div>
-          <div class="team-bio">PhD en Geografía. Profesor Associado NOVAFCSH, Universidade Nova de Lisboa, Portugal.</div>
-          <div class="team-links">
-            <a href="https://www.researchgate.net/profile/Carlos_Silva59" target="_blank" class="tl tl-rg" title="ResearchGate"><i class="fas fa-graduation-cap"></i></a>
-            <a href="https://orcid.org/0000-0003-1613-4321" target="_blank" class="tl tl-oc" title="ORCID"><i class="fab fa-orcid"></i></a>
-            <a href="https://scholar.google.pt/citations?user=4DaobpAAAAAJ&hl=en" target="_blank" class="tl tl-gs" title="Google Scholar"><i class="fab fa-google"></i></a>
-            <a href="https://www.linkedin.com/in/carlos-pereira-da-silva-32497470/" target="_blank" class="tl tl-li" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-          </div>
         </div>
       </div>
     </div>
@@ -638,7 +638,7 @@
     <!-- Servicio 1 -->
     <div class="svc-row fade-up">
       <div class="svc-img">
-        <img src="Fotos-seleccionadas/Trabajo de campo encuestas.jpg" alt="Análisis de visitantes - encuestas campo">
+        <img src="Fotos-seleccionadas/Trabajo de campo encuestas.webp" alt="Análisis de visitantes - encuestas campo">
       </div>
       <div class="svc-body">
         <div class="svc-num">01</div>
@@ -660,7 +660,7 @@
     <!-- Servicio 2 -->
     <div class="svc-row reverse fade-up">
       <div class="svc-img">
-        <img src="Fotos-seleccionadas/Uso publico/Cim Pedraforca 2.jpeg" alt="Masificación en Pedraforca - capacidad de acogida">
+        <img src="Fotos-seleccionadas/Uso publico/Cim Pedraforca 2.webp" alt="Masificación en Pedraforca - capacidad de acogida">
       </div>
       <div class="svc-body">
         <div class="svc-num">02</div>
@@ -682,7 +682,7 @@
     <!-- Servicio 3 -->
     <div class="svc-row fade-up">
       <div class="svc-img">
-        <img src="Fotos-seleccionadas/Uso publico/MONCAYO TRAIL_ FOTO INEFC CHALECO.jpeg" alt="Eventos deportivos en entornos naturales - Moncayo Trail">
+        <img src="Fotos-seleccionadas/Uso publico/MONCAYO TRAIL_ FOTO INEFC CHALECO.webp" alt="Eventos deportivos en entornos naturales - Moncayo Trail">
       </div>
       <div class="svc-body">
         <div class="svc-num">03</div>
@@ -704,7 +704,7 @@
     <!-- Servicio 4 -->
     <div class="svc-row reverse fade-up">
       <div class="svc-img">
-        <img src="Fotos-seleccionadas/Señalización/Resultados/Señalización Cap de Creus.jpeg" alt="Red de senderos - Cap de Creus">
+        <img src="Fotos-seleccionadas/Señalización/1. Sant Joan.webp" alt="Señalización en espacios naturales - Sant Joan">
       </div>
       <div class="svc-body">
         <div class="svc-num">04</div>
@@ -726,7 +726,7 @@
     <!-- Servicio 5 -->
     <div class="svc-row fade-up">
       <div class="svc-img">
-        <img src="Fotos-seleccionadas/Uso publico/Mobilitat Guilleries.jpeg" alt="Movilidad turística - Guilleries">
+        <img src="Fotos-seleccionadas/Uso publico/Fontalba aparcamiento coches_SINMATRIUCLAS.webp" alt="Movilidad y aparcamiento – Fontalba">
       </div>
       <div class="svc-body">
         <div class="svc-num">05</div>
@@ -748,7 +748,7 @@
     <!-- Servicio 6 -->
     <div class="svc-row reverse fade-up">
       <div class="svc-img">
-        <img src="Fotos-seleccionadas/Paisajes/Petjada CO2.png" alt="Huella de carbono - sostenibilidad">
+        <img src="Fotos-seleccionadas/Paisajes/Petjada CO2.webp" alt="Huella de carbono - sostenibilidad">
       </div>
       <div class="svc-body">
         <div class="svc-num">06</div>
@@ -770,7 +770,7 @@
     <!-- Servicio 7 -->
     <div class="svc-row fade-up">
       <div class="svc-img">
-        <img src="Fotos-seleccionadas/Proceso participativo Montsant.jpg" alt="Proceso participativo Montsant">
+        <img src="Fotos-seleccionadas/Proceso participativo Montsant.webp" alt="Proceso participativo Montsant">
       </div>
       <div class="svc-body">
         <div class="svc-num">07</div>
@@ -837,11 +837,10 @@
 <div class="gallery-section">
   <div class="container">
     <div class="gallery-grid">
-      <div class="gal-item"><img src="Fotos-seleccionadas/Equipo/ESPARC_2022 foto grupo.jpg" alt="Equipo EcoData en ESPARC 2022"></div>
-      <div class="gal-item"><img src="Fotos-seleccionadas/Trabajos de campo/Recollida info Siurana.jpg" alt="Trabajo de campo Siurana"></div>
-      <div class="gal-item"><img src="Fotos-seleccionadas/UICN Fotografia.jpg" alt="UICN"></div>
-      <div class="gal-item"><img src="Fotos-seleccionadas/Trabajos de campo/IMG_2482.JPG" alt="Trabajo de campo"></div>
-      <div class="gal-item"><img src="Fotos-seleccionadas/Uso publico/Exchange Irlanda Foto 2.jpg" alt="Exchange Irlanda"></div>
+      <div class="gal-item"><img src="Fotos-seleccionadas/Equipo/Carrera Puigverd equip.webp" alt="Equipo EcoData – Carrera Puigverd"></div>
+      <div class="gal-item"><img src="Fotos-seleccionadas/Equipo/ESPARC_2022 foto grupo.webp" alt="Equipo EcoData en ESPARC 2022"></div>
+      <div class="gal-item"><img src="Fotos-seleccionadas/Equipo/ESPARC 2024.webp" alt="Equipo EcoData en ESPARC 2024"></div>
+      <div class="gal-item"><img src="Fotos-seleccionadas/Equipo/Fotos MMV8 (4).webp" alt="Equipo EcoData"></div>
     </div>
   </div>
 </div>
@@ -860,23 +859,23 @@
     </div>
     <div class="ig-grid">
       <a href="https://www.instagram.com/ecodata_natura" target="_blank" class="ig-cell">
-        <img src="Fotos-seleccionadas/1. Pasarla.jpeg" alt="EcoData Instagram">
+        <img src="Fotos-seleccionadas/1. Pasarla.webp" alt="EcoData Instagram">
         <div class="ig-over"><i class="fab fa-instagram"></i></div>
       </a>
       <a href="https://www.instagram.com/ecodata_natura" target="_blank" class="ig-cell">
-        <img src="Fotos-seleccionadas/Equipo/Fotos MMV8 (4).jpg" alt="EcoData Instagram">
+        <img src="Fotos-seleccionadas/Equipo/Fotos MMV8 (4).webp" alt="EcoData Instagram">
         <div class="ig-over"><i class="fab fa-instagram"></i></div>
       </a>
       <a href="https://www.instagram.com/ecodata_natura" target="_blank" class="ig-cell">
-        <img src="Fotos-seleccionadas/Trabajos de campo/Formació TC CAP DE CREUS.jpeg" alt="EcoData Instagram">
+        <img src="Fotos-seleccionadas/Trabajos de campo/Formació TC CAP DE CREUS.webp" alt="EcoData Instagram">
         <div class="ig-over"><i class="fab fa-instagram"></i></div>
       </a>
       <a href="https://www.instagram.com/ecodata_natura" target="_blank" class="ig-cell">
-        <img src="Fotos-seleccionadas/Paisajes/Paisaje Montsant.JPG" alt="EcoData Instagram">
+        <img src="Fotos-seleccionadas/Paisajes/Paisaje Montsant.webp" alt="EcoData Instagram">
         <div class="ig-over"><i class="fab fa-instagram"></i></div>
       </a>
       <a href="https://www.instagram.com/ecodata_natura" target="_blank" class="ig-cell">
-        <img src="Fotos-seleccionadas/Instrumentos/Impacto sociambiental eventos.jpg" alt="EcoData Instagram">
+        <img src="Fotos-seleccionadas/Instrumentos/Impacto sociambiental eventos.webp" alt="EcoData Instagram">
         <div class="ig-over"><i class="fab fa-instagram"></i></div>
       </a>
     </div>
@@ -1001,9 +1000,9 @@
       <div class="footer-col">
         <h4 data-i18n="foot.legal">Legal</h4>
         <ul>
-          <li><a href="#" data-i18n="foot.privacy">Política de privacidad</a></li>
-          <li><a href="#" data-i18n="foot.cookies">Política de cookies</a></li>
-          <li><a href="#" data-i18n="foot.notice">Aviso legal</a></li>
+          <li><a href="legal.html#privacidad" target="_blank" data-i18n="foot.privacy">Política de privacidad</a></li>
+          <li><a href="legal.html#cookies" target="_blank" data-i18n="foot.cookies">Política de cookies</a></li>
+          <li><a href="legal.html#aviso-legal" target="_blank" data-i18n="foot.notice">Aviso legal</a></li>
         </ul>
         <h4 style="margin-top:1.4rem;" data-i18n="foot.linked">Vinculados a</h4>
         <ul>
