@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoData Natura S.L.P. — Gestión del uso público en espacios naturales protegidos</title>
+  <meta name="description" content="EcoData Natura es una spin-off del INEFC especializada en investigación aplicada sobre gestión del uso público en espacios naturales protegidos. Visitantes, capacidad de acogida, senderos, movilidad, huella de carbono y procesos participativos.">
+  <meta name="keywords" content="EcoData Natura, gestión uso público, espacios naturales protegidos, capacidad de acogida, afluencia visitantes, senderos, INEFC, Lleida, investigación aplicada">
+  <meta name="author" content="EcoData Natura S.L.P.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.ecodatanatura.com/">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.ecodatanatura.com/">
+  <meta property="og:title" content="EcoData Natura S.L.P. — Investigación aplicada en espacios naturales">
+  <meta property="og:description" content="Spin-off del INEFC especializada en gestión del uso público en espacios naturales protegidos. Datos precisos para decisiones sostenibles.">
+  <meta property="og:image" content="https://www.ecodatanatura.com/logo/Logo V blanco.png">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:locale:alternate" content="ca_ES">
+  <meta property="og:locale:alternate" content="en_GB">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="EcoData Natura S.L.P. — Investigación aplicada en espacios naturales">
+  <meta name="twitter:description" content="Spin-off del INEFC especializada en gestión del uso público en espacios naturales protegidos.">
+  <meta name="twitter:image" content="https://www.ecodatanatura.com/logo/Logo V blanco.png">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%232C4A1E'/><text y='24' x='4' font-size='21'>🌿</text></svg>">
+  <link rel="apple-touch-icon" href="logo/Logo V blanco.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script type="module" src="https://js.arcgis.com/4.34/embeddable-components/"></script>
+  <style>
+    :root {
+      --g-dark:   #2C4A1E;
+      --g-mid:    #3D6B2B;
+      --g-accent: #5A8A3D;
+      --g-light:  #DCE4B8;
+      --orange:   #E8934A;
+      --orange-h: #D47830;
+      --gray:     #DBDBDB;
+      --dark:     #1A2A0E;
+      --body:     #3D4A35;
+      --muted:    #6B7A60;
+      --bg-off:   #f8f9f4;
+      --shadow:   0 4px 24px rgba(44,74,30,.12);
+      --tr:       all .35s cubic-bezier(.25,.46,.45,.94);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--body); background: #fff; overflow-x: hidden; }
+    h1,h2,h3,h4 { font-family: 'Jost', sans-serif; font-weight: 700; }
+    img { display: block; }
+
+    /* ── NAVBAR ───────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      height: 72px; padding: 0 2.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(26,42,14,.97); backdrop-filter: blur(12px);
+      transition: var(--tr);
+    }
+    nav.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,.35); }
+    .nav-logo { display: flex; align-items: center; gap: .6rem; text-decoration: none; }
+    .nav-logo img { height: 48px; width: auto; object-fit: contain; }
+    .nav-links { display: flex; align-items: center; gap: .1rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none; color: rgba(255,255,255,.82);
+      font-family: 'Jost', sans-serif; font-weight: 500; font-size: .8rem;
+      letter-spacing: .055em; text-transform: uppercase;
+      padding: .45rem .8rem; border-radius: 6px; transition: var(--tr);
+    }
+    .nav-links a:hover { color: #fff; background: rgba(255,255,255,.1); }
+    .nav-links .cta-nav {
+      background: var(--orange); color: #fff !important;
+      border-radius: 7px !important; padding: .45rem 1.1rem !important; font-weight: 600 !important;
+    }
+    .nav-links .cta-nav:hover { background: var(--orange-h) !important; }
+    .nav-right { display: flex; align-items: center; gap: .75rem; }
+    .lang-sw { display: flex; gap: .25rem; }
+    .lang-btn {
+      background: none; border: 1px solid rgba(255,255,255,.3);
+      color: rgba(255,255,255,.65); font-family: 'Jost', sans-serif;
+      font-weight: 600; font-size: .7rem; letter-spacing: .06em;
+      padding: .28rem .5rem; border-radius: 4px; cursor: pointer; transition: var(--tr);
+    }
+    .lang-btn.active,.lang-btn:hover { background: rgba(255,255,255,.15); border-color: rgba(255,255,255,.6); color: #fff; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: .4rem; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: #fff; border-radius: 2px; transition: var(--tr); }
+
+    /* ── MOBILE NAV ──────────────────────────────── */
+    .mob-nav { display: none; position: fixed; inset: 0; background: var(--dark); z-index: 999; flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem; }
+    .mob-nav.open { display: flex; }
+    .mob-nav a { font-family: 'Jost', sans-serif; font-size: 1.6rem; font-weight: 700; color: #fff; text-decoration: none; }
+    .mob-close { position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer; }
+    .mob-lang { display: flex; gap: .75rem; margin-top: .5rem; }
+
+    /* ── HERO ────────────────────────────────────── */
+    #inicio { position: relative; height: 100vh; min-height: 580px; overflow: hidden; }
+    .hero-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1.3s ease-in-out; }
+    .hero-slide.active { opacity: 1; }
+    .hero-slide img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(26,42,14,.2) 0%, rgba(26,42,14,.5) 55%, rgba(26,42,14,.75) 100%); }
+    .hero-content { position: absolute; inset: 0; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 2rem; }
+    .hero-badge { display: inline-flex; align-items: center; gap: .5rem; background: rgba(220,228,184,.15); border: 1px solid rgba(220,228,184,.35); color: var(--g-light); font-family: 'Jost', sans-serif; font-weight: 600; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; padding: .38rem 1rem; border-radius: 100px; margin-bottom: 1.4rem; }
+    .hero-title { font-size: clamp(2rem,5vw,3.9rem); color: #fff; line-height: 1.18; max-width: 870px; margin-bottom: 1.3rem; text-shadow: 0 2px 20px rgba(0,0,0,.3); }
+    .hero-sub { font-size: clamp(.9rem,1.8vw,1.1rem); color: rgba(255,255,255,.82); max-width: 580px; line-height: 1.75; margin-bottom: 2.2rem; }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+    .hero-dots { position: absolute; bottom: 1.75rem; left: 50%; transform: translateX(-50%); display: flex; gap: .55rem; z-index: 2; }
+    .hero-dot { width: 8px; height: 8px; border-radius: 4px; background: rgba(255,255,255,.35); border: none; cursor: pointer; transition: var(--tr); }
+    .hero-dot.active { width: 24px; background: var(--orange); }
+    .scroll-hint { position: absolute; bottom: 1.75rem; right: 2rem; z-index: 2; color: rgba(255,255,255,.6); display: flex; flex-direction: column; align-items: center; gap: .3rem; font-size: .65rem; letter-spacing: .1em; text-transform: uppercase; animation: bounce 2.2s infinite; }
+    @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(7px)} }
+
+    /* ── BUTTONS ─────────────────────────────────── */
+    .btn-primary { display: inline-flex; align-items: center; gap: .45rem; background: var(--orange); color: #fff; text-decoration: none; font-family: 'Jost', sans-serif; font-weight: 600; font-size: .88rem; letter-spacing: .03em; padding: .8rem 1.7rem; border-radius: 8px; border: none; cursor: pointer; transition: var(--tr); }
+    .btn-primary:hover { background: var(--orange-h); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(232,147,74,.4); }
+    .btn-secondary { display: inline-flex; align-items: center; gap: .45rem; background: rgba(255,255,255,.12); color: #fff; text-decoration: none; font-family: 'Jost', sans-serif; font-weight: 600; font-size: .88rem; padding: .8rem 1.7rem; border-radius: 8px; border: 1px solid rgba(255,255,255,.38); cursor: pointer; transition: var(--tr); }
+    .btn-secondary:hover { background: rgba(255,255,255,.22); transform: translateY(-2px); }
+    .btn-green { display: inline-flex; align-items: center; gap: .45rem; background: var(--g-dark); color: #fff; text-decoration: none; font-family: 'Jost', sans-serif; font-weight: 600; font-size: .88rem; padding: .78rem 1.55rem; border-radius: 8px; border: none; cursor: pointer; transition: var(--tr); }
+    .btn-green:hover { background: var(--g-mid); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(44,74,30,.3); }
+    .btn-outline { display: inline-flex; align-items: center; gap: .45rem; background: transparent; color: var(--g-dark); text-decoration: none; font-family: 'Jost', sans-serif; font-weight: 600; font-size: .88rem; padding: .78rem 1.55rem; border-radius: 8px; border: 2px solid var(--g-dark); cursor: pointer; transition: var(--tr); }
+    .btn-outline:hover { background: var(--g-dark); color: #fff; transform: translateY(-2px); }
+
+    /* ── LAYOUT ──────────────────────────────────── */
+    .section { padding: 5rem 0; }
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 2rem; }
+    .sec-label { display: inline-block; font-family: 'Jost', sans-serif; font-weight: 600; font-size: .72rem; letter-spacing: .16em; text-transform: uppercase; color: var(--g-accent); margin-bottom: .7rem; }
+    .sec-title { font-size: clamp(1.7rem,3vw,2.4rem); color: var(--dark); line-height: 1.25; margin-bottom: 1rem; }
+    .sec-sub { font-size: .97rem; color: var(--muted); line-height: 1.75; max-width: 580px; }
+    .fade-up { opacity: 0; transform: translateY(28px); transition: opacity .65s ease, transform .65s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .text-center { text-align: center; }
+    .mx-auto { margin-left: auto; margin-right: auto; }
+
+    /* ── ABOUT ───────────────────────────────────── */
+    #nosotros { background: #fff; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .about-text p { font-size: .95rem; line-height: 1.82; color: var(--body); margin-bottom: 1.15rem; }
+    .about-quote { background: var(--g-light); border-left: 4px solid var(--g-accent); padding: 1.15rem 1.4rem; border-radius: 0 10px 10px 0; margin: 1.4rem 0; }
+    .about-quote p { font-style: italic; color: var(--g-dark); margin: 0; font-size: .97rem; }
+    .about-btns { display: flex; gap: .85rem; flex-wrap: wrap; margin-top: 1.8rem; }
+    .about-visual { position: relative; }
+    .about-img { width: 100%; height: 440px; object-fit: cover; border-radius: 18px; box-shadow: var(--shadow); }
+    .about-img-sm { position: absolute; bottom: -1.8rem; left: -1.8rem; width: 195px; height: 148px; object-fit: cover; border-radius: 12px; border: 4px solid #fff; box-shadow: 0 8px 32px rgba(0,0,0,.2); }
+
+    /* ── STATS ───────────────────────────────────── */
+    #estadisticas { background: var(--g-dark); padding: 4rem 0; }
+    .stats-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.5rem; }
+    .stat-item { text-align: center; padding: 2rem 1rem; }
+    .stat-num { font-family: 'Jost', sans-serif; font-size: 3.4rem; font-weight: 800; color: var(--g-light); line-height: 1; margin-bottom: .4rem; }
+    .stat-num .plus { color: var(--orange); }
+    .stat-lab { font-size: .82rem; color: rgba(220,228,184,.65); text-transform: uppercase; letter-spacing: .09em; font-family: 'Jost', sans-serif; font-weight: 500; }
+
+    /* ── TEAM ────────────────────────────────────── */
+    #equipo { background: var(--bg-off); }
+    .team-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(230px,1fr)); gap: 1.5rem; margin-top: 3rem; }
+    .team-card { background: #fff; border-radius: 18px; overflow: hidden; box-shadow: 0 2px 14px rgba(44,74,30,.08); transition: var(--tr); }
+    .team-card:hover { transform: translateY(-6px); box-shadow: 0 14px 36px rgba(44,74,30,.16); }
+    .team-photo { width: 100%; height: 210px; object-fit: contain; object-position: center bottom; background: #edf1e3; padding: .5rem .5rem 0; }
+    .team-placeholder { width: 100%; height: 210px; background: var(--g-light); display: flex; align-items: center; justify-content: center; font-family: 'Jost', sans-serif; font-size: 2.5rem; font-weight: 700; color: var(--g-dark); }
+    .team-info { padding: 1.2rem; }
+    .team-name { font-family: 'Jost', sans-serif; font-size: .97rem; font-weight: 700; color: var(--dark); margin-bottom: .2rem; }
+    .team-role { font-size: .75rem; color: var(--g-accent); font-weight: 600; letter-spacing: .03em; margin-bottom: .5rem; }
+    .team-bio { font-size: .78rem; color: var(--muted); line-height: 1.6; margin-bottom: .9rem; }
+    .team-links { display: flex; gap: .45rem; flex-wrap: wrap; }
+    .tl { display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 6px; font-size: .78rem; text-decoration: none; transition: background .2s ease, color .2s ease; }
+    /* RG, ORCID, Scholar: ocultar icono FA y mostrar texto abreviado */
+    .tl-rg { background:#e3f5f4; color:#00CCBB; } .tl-rg:hover { background:#00CCBB; color:#fff; }
+    .tl-oc { background:#f3f8e8; color:#7fba00; } .tl-oc:hover { background:#7fba00; color:#fff; }
+    .tl-gs { background:#fdeaea; color:#EA4335; } .tl-gs:hover { background:#EA4335; color:#fff; }
+    .tl-rg i, .tl-oc i, .tl-gs i { display: none; }
+    .tl-rg::after { content: 'RG';  font-family: 'Jost', sans-serif; font-weight: 700; font-size: .68rem; }
+    .tl-oc::after { content: 'iD';  font-family: 'Jost', sans-serif; font-weight: 700; font-size: .68rem; }
+    .tl-gs::after { content: 'GS';  font-family: 'Jost', sans-serif; font-weight: 700; font-size: .68rem; }
+    /* LinkedIn: texto abreviado "in" (consistente con RG/iD/GS) */
+    .tl-li { background:#e7f0f9; color:#0A66C2; } .tl-li:hover { background:#0A66C2; color:#fff; }
+    .tl-li i { display: none; }
+    .tl-li::after { content: 'in'; font-family: 'Jost', sans-serif; font-weight: 700; font-size: .68rem; }
+    /* Scopus */
+    .tl-sc { background:#fff3e3; color:#E9711C; } .tl-sc:hover { background:#E9711C; color:#fff; }
+    .tl-sc::after { content: 'SC'; font-family: 'Jost', sans-serif; font-weight: 700; font-size: .68rem; }
+    /* Lattes */
+    .tl-lt { background:#e8f0fe; color:#1A73E8; } .tl-lt:hover { background:#1A73E8; color:#fff; }
+    .tl-lt::after { content: 'LT'; font-family: 'Jost', sans-serif; font-weight: 700; font-size: .68rem; }
+
+    /* ── SERVICES ── OVERVIEW INTRO ─────────────── */
+    #servicios { background: #fff; }
+    .svc-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-bottom: 4rem; }
+
+    /* ── SERVICES ── DETAIL ROWS ─────────────────── */
+    .svc-row {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+      min-height: 480px; border-radius: 20px; overflow: hidden;
+      margin-bottom: 2rem; box-shadow: 0 4px 32px rgba(44,74,30,.1);
+    }
+    .svc-row.reverse { direction: rtl; }
+    .svc-row.reverse > * { direction: ltr; }
+    .svc-img { overflow: hidden; position: relative; }
+    .svc-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+    .svc-img video { width: 100%; height: 100%; object-fit: cover; }
+    .svc-row:hover .svc-img img { transform: scale(1.04); }
+    .svc-body { background: var(--bg-off); padding: 3.5rem; display: flex; flex-direction: column; justify-content: center; }
+    .svc-num { font-family: 'Jost', sans-serif; font-size: 4rem; font-weight: 800; color: var(--g-light); line-height: 1; margin-bottom: .5rem; }
+    .svc-row:hover .svc-num { color: var(--g-accent); transition: color .3s; }
+    .svc-icon-wrap { display: flex; align-items: center; gap: .75rem; margin-bottom: 1rem; }
+    .svc-icon { width: 48px; height: 48px; border-radius: 12px; background: var(--g-dark); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: var(--g-light); transition: var(--tr); }
+    .svc-row:hover .svc-icon { background: var(--orange); }
+    .svc-title { font-family: 'Jost', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--dark); margin-bottom: .85rem; line-height: 1.3; }
+    .svc-desc { font-size: .9rem; color: var(--body); line-height: 1.78; margin-bottom: 1.2rem; }
+    .svc-bullets { list-style: none; display: flex; flex-direction: column; gap: .5rem; }
+    .svc-bullets li { display: flex; gap: .55rem; font-size: .84rem; color: var(--muted); align-items: flex-start; }
+    .svc-bullets li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--g-accent); flex-shrink: 0; margin-top: .45rem; }
+
+    /* ── METHODOLOGY ─────────────────────────────── */
+    #metodologia { background: var(--g-light); padding: 5rem 0; }
+    .method-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.6rem; margin-top: 2.8rem; }
+    .method-step { background: #fff; border-radius: 18px; padding: 2.2rem; text-align: center; position: relative; }
+    .method-step:not(:last-child)::after { content: '→'; position: absolute; right: -1.3rem; top: 50%; transform: translateY(-50%); font-size: 1.4rem; color: var(--g-accent); z-index: 1; }
+    .method-num { width: 46px; height: 46px; border-radius: 50%; background: var(--g-dark); color: var(--g-light); font-family: 'Jost', sans-serif; font-weight: 700; font-size: 1.1rem; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.1rem; }
+    .method-title { font-family: 'Jost', sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--dark); margin-bottom: .7rem; }
+    .method-desc { font-size: .84rem; color: var(--muted); line-height: 1.72; }
+
+    /* ── MAP ─────────────────────────────────────── */
+    #proyectos { background: #fff; }
+    .map-wrap { margin-top: 2.5rem; border-radius: 18px; overflow: hidden; box-shadow: var(--shadow); }
+    .map-wrap arcgis-embedded-map { display: block; width: 100%; height: 600px; }
+
+    /* ── GALLERY ─────────────────────────────────── */
+    .gallery-section { background: var(--bg-off); padding: 0 0 5rem; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(4,1fr); grid-template-rows: 200px 200px; gap: .6rem; margin-top: 2.5rem; border-radius: 18px; overflow: hidden; }
+    .gal-item { overflow: hidden; position: relative; }
+    .gal-item:first-child { grid-column: span 2; grid-row: span 2; }
+    .gal-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+    .gal-item:hover img { transform: scale(1.06); }
+
+    /* ── INSTAGRAM ───────────────────────────────── */
+    #instagram { background: var(--g-dark); padding: 4rem 0; }
+    .ig-head { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem; }
+    .ig-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: .5rem; }
+    .ig-cell { aspect-ratio: 1; border-radius: 8px; overflow: hidden; position: relative; cursor: pointer; }
+    .ig-cell img { width: 100%; height: 100%; object-fit: cover; transition: var(--tr); }
+    .ig-cell:hover img { transform: scale(1.08); }
+    .ig-over { position: absolute; inset: 0; background: rgba(26,42,14,.5); opacity: 0; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.2rem; transition: var(--tr); }
+    .ig-cell:hover .ig-over { opacity: 1; }
+
+    /* ── CONTACT ─────────────────────────────────── */
+    #contacto { background: var(--dark); padding: 5rem 0; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+    .ci-desc { color: rgba(255,255,255,.58); font-size: .94rem; line-height: 1.8; margin-top: .9rem; }
+    .ci-item { display: flex; gap: .9rem; margin-top: 1.7rem; align-items: flex-start; }
+    .ci-icon { width: 42px; height: 42px; border-radius: 10px; background: rgba(220,228,184,.1); border: 1px solid rgba(220,228,184,.2); display: flex; align-items: center; justify-content: center; color: var(--g-light); font-size: .95rem; flex-shrink: 0; }
+    .ci-detail strong { display: block; color: var(--g-light); font-family: 'Jost', sans-serif; font-size: .82rem; font-weight: 600; margin-bottom: .2rem; }
+    .ci-detail span,.ci-detail a { color: rgba(255,255,255,.6); font-size: .86rem; text-decoration: none; }
+    .ci-detail a:hover { color: var(--g-light); }
+    .contact-form { background: rgba(255,255,255,.05); border: 1px solid rgba(220,228,184,.14); border-radius: 20px; padding: 2.4rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: .9rem; }
+    .fg { margin-bottom: 1.1rem; }
+    .fg label { display: block; font-size: .76rem; font-weight: 600; color: rgba(220,228,184,.75); letter-spacing: .07em; text-transform: uppercase; margin-bottom: .4rem; }
+    .fg input,.fg select,.fg textarea { width: 100%; background: rgba(255,255,255,.07); border: 1px solid rgba(220,228,184,.18); border-radius: 8px; padding: .78rem 1rem; color: #fff; font-family: 'Inter', sans-serif; font-size: .86rem; outline: none; transition: var(--tr); }
+    .fg input::placeholder,.fg textarea::placeholder { color: rgba(255,255,255,.28); }
+    .fg select option { background: var(--dark); }
+    .fg input:focus,.fg select:focus,.fg textarea:focus { border-color: var(--g-light); background: rgba(255,255,255,.1); }
+    .fg textarea { height: 115px; resize: vertical; }
+
+    /* ── FOOTER ──────────────────────────────────── */
+    footer { background: #0f1a07; padding: 3rem 0 1.5rem; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2.5rem; padding-bottom: 2.2rem; border-bottom: 1px solid rgba(255,255,255,.07); }
+    .footer-logo img { height: 52px; width: auto; margin-bottom: .9rem; }
+    .footer-brand-text { font-size: .83rem; color: rgba(255,255,255,.42); line-height: 1.72; }
+    .footer-soc { display: flex; gap: .65rem; margin-top: 1.4rem; }
+    .soc-btn { width: 38px; height: 38px; border-radius: 8px; background: rgba(255,255,255,.12); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,.85); text-decoration: none; font-size: 1rem; transition: background .2s ease, color .2s ease; }
+    .soc-btn:hover { background: var(--orange); color: #fff; }
+    .footer-col h4 { font-family: 'Jost', sans-serif; font-weight: 600; font-size: .78rem; text-transform: uppercase; letter-spacing: .1em; color: rgba(255,255,255,.45); margin-bottom: 1.1rem; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: .55rem; }
+    .footer-col a { color: rgba(255,255,255,.45); text-decoration: none; font-size: .84rem; transition: var(--tr); }
+    .footer-col a:hover { color: var(--g-light); }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 1.4rem; flex-wrap: wrap; gap: .5rem; }
+    .footer-bottom p { font-size: .76rem; color: rgba(255,255,255,.28); }
+
+    /* ── FAB ─────────────────────────────────────── */
+    .fab { position: fixed; bottom: 2rem; right: 2rem; width: 52px; height: 52px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.35rem; text-decoration: none; z-index: 500; box-shadow: 0 4px 20px rgba(37,211,102,.5); transition: var(--tr); animation: fab-pulse 2.5s infinite; }
+    .fab:hover { transform: scale(1.1); }
+    @keyframes fab-pulse { 0%,100%{box-shadow:0 4px 20px rgba(37,211,102,.5)} 50%{box-shadow:0 4px 32px rgba(37,211,102,.82)} }
+
+    /* ── RESPONSIVE ──────────────────────────────── */
+    @media(max-width:960px) {
+      .nav-links,.lang-sw { display: none; }
+      .hamburger { display: flex; }
+      .about-grid,.contact-grid,.svc-intro { grid-template-columns: 1fr; gap: 2.5rem; }
+      .stats-grid { grid-template-columns: repeat(2,1fr); }
+      .method-grid { grid-template-columns: 1fr; }
+      .method-step::after { display: none; }
+      .gallery-grid { grid-template-columns: repeat(2,1fr); grid-template-rows: auto; }
+      .gal-item:first-child { grid-column: span 2; grid-row: span 1; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .ig-grid { grid-template-columns: repeat(3,1fr); }
+      .svc-row { grid-template-columns: 1fr; min-height: auto; }
+      .svc-row.reverse { direction: ltr; }
+      .svc-img { height: 280px; }
+      .svc-body { padding: 2rem; }
+    }
+    @media(max-width:580px) {
+      .stats-grid { grid-template-columns: repeat(2,1fr); }
+      .footer-grid { grid-template-columns: 1fr; }
+      .ig-grid { grid-template-columns: repeat(2,1fr); }
+      .hero-btns { flex-direction: column; align-items: center; }
+      .about-img-sm { display: none; }
+    }
+  </style>
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "EcoData Natura S.L.P.",
+    "url": "https://www.ecodatanatura.com",
+    "logo": "https://www.ecodatanatura.com/logo/Logo V blanco.png",
+    "description": "Spin-off del INEFC especializada en investigación aplicada sobre gestión del uso público en espacios naturales protegidos.",
+    "foundingDate": "2024",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Lleida",
+      "addressRegion": "Catalunya",
+      "addressCountry": "ES"
+    },
+    "email": "info@ecodatanatura.com",
+    "sameAs": [
+      "https://www.instagram.com/ecodata_natura",
+      "https://www.linkedin.com/company/ecodata-natura",
+      "https://www.researchgate.net"
+    ],
+    "parentOrganization": {
+      "@type": "Organization",
+      "name": "Institut Nacional d'Educació Física de Catalunya (INEFC)"
+    }
+  }
+  </script>
+</head>
+<body>
+
+<!-- MOBILE NAV -->
+<div class="mob-nav" id="mobNav">
+  <button class="mob-close" onclick="toggleNav()">✕</button>
+  <a href="#inicio"     onclick="toggleNav()" data-i18n="nav.home">Inicio</a>
+  <a href="#nosotros"   onclick="toggleNav()" data-i18n="nav.about">Nosotros</a>
+  <a href="#servicios"  onclick="toggleNav()" data-i18n="nav.services">Servicios</a>
+  <a href="#proyectos"  onclick="toggleNav()" data-i18n="nav.projects">Proyectos</a>
+  <a href="#contacto"   onclick="toggleNav()" data-i18n="nav.contact">Contacto</a>
+  <div class="mob-lang">
+    <button class="lang-btn active" onclick="setLang('es')">ES</button>
+    <button class="lang-btn"        onclick="setLang('ca')">CA</button>
+    <button class="lang-btn"        onclick="setLang('en')">EN</button>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <a href="#inicio" class="nav-logo">
+    <img src="logo/Logo V blanco.png" alt="EcoData Natura" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div style="display:none;align-items:center;gap:.5rem;">
+      <div style="width:42px;height:42px;border-radius:10px;background:linear-gradient(135deg,#5A8A3D,#3D6B2B);display:flex;align-items:center;justify-content:center;font-size:1.3rem;">🌿</div>
+      <div style="display:flex;flex-direction:column;"><b style="font-family:'Jost',sans-serif;font-weight:700;font-size:1rem;color:#fff;">EcoData Natura</b><small style="font-size:.6rem;color:#DCE4B8;letter-spacing:.1em;text-transform:uppercase;">S.L.P.</small></div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#inicio"    data-i18n="nav.home">Inicio</a></li>
+    <li><a href="#nosotros"  data-i18n="nav.about">Nosotros</a></li>
+    <li><a href="#servicios" data-i18n="nav.services">Servicios</a></li>
+    <li><a href="#proyectos" data-i18n="nav.projects">Proyectos</a></li>
+    <li><a href="#contacto"  class="cta-nav" data-i18n="nav.contact">Contacto</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang-sw">
+      <button class="lang-btn active" onclick="setLang('es')">ES</button>
+      <button class="lang-btn"        onclick="setLang('ca')">CA</button>
+      <button class="lang-btn"        onclick="setLang('en')">EN</button>
+    </div>
+    <button class="hamburger" onclick="toggleNav()" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ══ HERO ════════════════════════════════════════ -->
+<section id="inicio">
+  <div class="hero-slide active"><img src="Fotos-seleccionadas/Paisajes/IMG_1196.jpeg" alt="Paisaje natural"><div class="hero-overlay"></div></div>
+  <div class="hero-slide"><img src="Fotos-seleccionadas/Uso publico/Portada Siurana.jpg" alt="Siurana"><div class="hero-overlay"></div></div>
+  <div class="hero-slide"><img src="Fotos-seleccionadas/Trabajos de campo/Foto portada bonabé 2.jpg" alt="Bonabé"><div class="hero-overlay"></div></div>
+  <div class="hero-slide"><img src="Fotos-seleccionadas/Paisajes/Paisaje GR.jpeg" alt="GR"><div class="hero-overlay"></div></div>
+
+  <div class="hero-content">
+    <div class="hero-badge"><i class="fas fa-leaf"></i><span data-i18n="hero.badge">Spin-off INEFC · Lleida · 2024</span></div>
+    <h1 class="hero-title" data-i18n="hero.title">Cuidar los espacios naturales<br>empieza por comprenderlos</h1>
+    <p class="hero-sub" data-i18n="hero.sub">Investigación aplicada para la gestión del uso público en espacios naturales protegidos. Datos precisos para decisiones sostenibles.</p>
+    <div class="hero-btns">
+      <a href="#servicios" class="btn-primary"><i class="fas fa-binoculars"></i><span data-i18n="hero.cta1">Nuestros servicios</span></a>
+      <a href="#contacto"  class="btn-secondary"><i class="fas fa-envelope"></i><span data-i18n="hero.cta2">Contactar</span></a>
+    </div>
+  </div>
+
+  <div class="hero-dots" id="heroDots">
+    <button class="hero-dot active" onclick="goSlide(0)"></button>
+    <button class="hero-dot"        onclick="goSlide(1)"></button>
+    <button class="hero-dot"        onclick="goSlide(2)"></button>
+    <button class="hero-dot"        onclick="goSlide(3)"></button>
+  </div>
+  <div class="scroll-hint"><i class="fas fa-chevron-down"></i><span>scroll</span></div>
+</section>
+
+<!-- ══ ABOUT ═══════════════════════════════════════ -->
+<section id="nosotros" class="section">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text fade-up">
+        <span class="sec-label" data-i18n="about.label">Quiénes somos</span>
+        <h2 class="sec-title" data-i18n="about.title">Una spin-off nacida de<br>30 años de investigación aplicada</h2>
+        <p data-i18n="about.p1">EcoData Natura es una spin-off del Instituto Nacional de Educación Física de Cataluña (INEFC) - Centro de Lleida, creada en 2024 en el marco del programa <em>INEFC Emprèn</em> y con el acompañamiento del <em>CEEI Lleida</em>, fruto de más de 30 años de investigación aplicada en el ámbito del uso público en espacios naturales protegidos.</p>
+        <p data-i18n="about.p2">El proyecto tiene su origen en la trayectoria de la Dra. Estela Farías Torbidoni, quien, al incorporarse al grupo de investigación <em>GISEAFE</em>, impulsa y consolida la línea de investigación <em>"Deporte, territorio y sostenibilidad en espacios naturales protegidos"</em>. A partir de este núcleo inicial, se suman el Dr. Serni Morera, el Dr. Ricardo Nogueira y el Dr. Víctor Dorado, conformando un equipo interdisciplinar con una sólida base científica y una amplia experiencia en investigación aplicada.</p>
+        <div class="about-quote">
+          <p data-i18n="about.quote">Somos una entidad especializada en estudios sobre la gestión del uso público en espacios naturales protegidos, cuya misión es contribuir a una correcta toma de decisiones mediante la identificación, recopilación y sistematización de información vinculada.</p>
+        </div>
+        <div class="about-btns">
+          <a href="#equipo"    class="btn-green"><i class="fas fa-users"></i><span data-i18n="about.cta1">Conoce el equipo</span></a>
+          <a href="#servicios" class="btn-outline"><i class="fas fa-arrow-right"></i><span data-i18n="about.cta2">Qué hacemos</span></a>
+        </div>
+      </div>
+      <div class="about-visual fade-up">
+        <img src="Fotos-seleccionadas/Equipo/ESPARC 2024.jpg" alt="Equipo EcoData Natura en ESPARC 2024" class="about-img">
+        <img src="Fotos-seleccionadas/Espai CEEI.jpeg" alt="Sede EcoData Natura – Espai CEEI Lleida" class="about-img-sm">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ STATS ════════════════════════════════════════ -->
+<section id="estadisticas">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item fade-up">
+        <div class="stat-num"><span class="counter" data-target="23">0</span><span class="plus">+</span></div>
+        <div class="stat-lab" data-i18n="stats.projects">Proyectos realizados</div>
+      </div>
+      <div class="stat-item fade-up">
+        <div class="stat-num"><span class="counter" data-target="37">0</span></div>
+        <div class="stat-lab" data-i18n="stats.articles">Artículos científicos</div>
+      </div>
+      <div class="stat-item fade-up">
+        <div class="stat-num"><span class="counter" data-target="4">0</span></div>
+        <div class="stat-lab" data-i18n="stats.thesis">Tesis doctorales</div>
+      </div>
+      <div class="stat-item fade-up">
+        <div class="stat-num"><span class="counter" data-target="30">0</span><span class="plus">+</span></div>
+        <div class="stat-lab" data-i18n="stats.years">Años de investigación</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TEAM ═════════════════════════════════════════ -->
+<section id="equipo" class="section">
+  <div class="container">
+    <div class="text-center fade-up">
+      <span class="sec-label" data-i18n="team.label">El equipo</span>
+      <h2 class="sec-title" data-i18n="team.title">Multidisciplinar, riguroso y apasionado por la naturaleza</h2>
+      <p class="sec-sub mx-auto" data-i18n="team.sub">Combinamos conocimiento académico, experiencia profesional y pasión por la naturaleza para aportar soluciones a la gestión del uso público en espacios naturales.</p>
+    </div>
+    <div class="team-grid">
+      <div class="team-card fade-up">
+        <img src="Fotos_Equip/Estela.png" alt="Dra. Estela Farías Torbidoni" class="team-photo">
+        <div class="team-info">
+          <div class="team-name">Dra. Estela I. Farías Torbidoni</div>
+          <div class="team-role">Directora científica</div>
+          <div class="team-bio">PhD en CAFD, MSc Espacios Naturales Protegidos, MBA. Profesora Titular INEFC – Universitat de Lleida.</div>
+          <div class="team-links">
+            <a href="https://www.researchgate.net/profile/Estela-Farias-Torbidoni" target="_blank" class="tl tl-rg" title="ResearchGate"><i class="fas fa-graduation-cap"></i></a>
+            <a href="https://orcid.org/0000-0002-7541-8140" target="_blank" class="tl tl-oc" title="ORCID"><i class="fab fa-orcid"></i></a>
+            <a href="https://scholar.google.com/citations?user=2KmSiSkAAAAJ&hl=es" target="_blank" class="tl tl-gs" title="Google Scholar"><i class="fab fa-google"></i></a>
+            <a href="https://www.linkedin.com/in/estela-in%C3%A9s-far%C3%ADas-torbidoni-a44b9a11/" target="_blank" class="tl tl-li" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="team-card fade-up">
+        <img src="Fotos_Equip/Víctor_Dorado-removebg-preview.png" alt="Dr. Víctor Dorado Martínez" class="team-photo">
+        <div class="team-info">
+          <div class="team-name">Dr. Víctor Dorado Martínez</div>
+          <div class="team-role">Director ejecutivo</div>
+          <div class="team-bio">PhD en CAFD, MSc Espacios Naturales Protegidos, MSc Gestión Deportiva. Especialista en capacidad de acogida de visitantes.</div>
+          <div class="team-links">
+            <a href="https://www.researchgate.net/profile/Victor-Dorado" target="_blank" class="tl tl-rg" title="ResearchGate"><i class="fas fa-graduation-cap"></i></a>
+            <a href="https://orcid.org/0000-0002-7253-8083" target="_blank" class="tl tl-oc" title="ORCID"><i class="fab fa-orcid"></i></a>
+            <a href="https://scholar.google.es/citations?user=onBNSnAAAAAJ&hl=es" target="_blank" class="tl tl-gs" title="Google Scholar"><i class="fab fa-google"></i></a>
+            <a href="https://www.linkedin.com/in/vicdorado/" target="_blank" class="tl tl-li" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="team-card fade-up">
+        <img src="Fotos_Equip/Serni_Morera-removebg-preview.png" alt="Dr. Serni Morera Carbonell" class="team-photo">
+        <div class="team-info">
+          <div class="team-name">Dr. Serni Morera Carbonell</div>
+          <div class="team-role">Investigador senior</div>
+          <div class="team-bio">Investigador especializado en espacios naturales protegidos y gestión del uso público territorial.</div>
+          <div class="team-links">
+            <a href="https://www.researchgate.net/profile/Serni-Morera" target="_blank" class="tl tl-rg" title="ResearchGate"><i class="fas fa-graduation-cap"></i></a>
+            <a href="https://orcid.org/0000-0002-5340-555X" target="_blank" class="tl tl-oc" title="ORCID"><i class="fab fa-orcid"></i></a>
+            <a href="https://scholar.google.com/citations?user=1llVhbYAAAAJ&hl=ca" target="_blank" class="tl tl-gs" title="Google Scholar"><i class="fab fa-google"></i></a>
+            <a href="https://www.linkedin.com/in/serni-morera-carbonell-64b97797/" target="_blank" class="tl tl-li" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="team-card fade-up">
+        <img src="Fotos_Equip/Ricardo-removebg-preview.png" alt="Dr. Ricardo Nogueira Mendes" class="team-photo">
+        <div class="team-info">
+          <div class="team-name">Dr. Ricardo M. Nogueira Mendes</div>
+          <div class="team-role">Investigador senior</div>
+          <div class="team-bio">PhD especialista en análisis de datos y sistemas de información geográfica aplicados a espacios naturales.</div>
+          <div class="team-links">
+            <a href="https://www.researchgate.net/profile/Ricardo-M-Nogueira-Mendes-2" target="_blank" class="tl tl-rg" title="ResearchGate"><i class="fas fa-graduation-cap"></i></a>
+            <a href="https://orcid.org/0000-0002-3284-7148" target="_blank" class="tl tl-oc" title="ORCID"><i class="fab fa-orcid"></i></a>
+            <a href="https://scholar.google.com/citations?user=FFStI9UAAAAJ&hl=en" target="_blank" class="tl tl-gs" title="Google Scholar"><i class="fab fa-google"></i></a>
+            <a href="https://www.linkedin.com/in/ricardo-m-nogueira-mendes-89a264a8/" target="_blank" class="tl tl-li" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="team-card fade-up">
+        <img src="Fotos_Equip/Vanessa_da_Mota-removebg-preview.png" alt="Dra. Vanessa Teles da Mota" class="team-photo">
+        <div class="team-info">
+          <div class="team-name">Dra. Vanessa Teles da Mota</div>
+          <div class="team-role">Investigadora</div>
+          <div class="team-bio">PhD con experiencia en gestión de espacios naturales y análisis del comportamiento de visitantes.</div>
+          <div class="team-links">
+            <a href="https://www.researchgate.net/profile/Vanessa-Teles-Da-Mota-2" target="_blank" class="tl tl-rg" title="ResearchGate"><i class="fas fa-graduation-cap"></i></a>
+            <a href="https://orcid.org/0000-0003-4841-3632" target="_blank" class="tl tl-oc" title="ORCID"><i class="fab fa-orcid"></i></a>
+            <a href="https://scholar.google.com/citations?user=84gzLdkAAAAJ&hl=en" target="_blank" class="tl tl-gs" title="Google Scholar"><i class="fab fa-google"></i></a>
+            <a href="https://www.linkedin.com/in/vanessa-teles-da-mota-730aba116/" target="_blank" class="tl tl-li" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="team-card fade-up">
+        <img src="Fotos_Equip/Maria_Ulloa-removebg-preview.png" alt="Dra. Maira Ulloa Hernández" class="team-photo">
+        <div class="team-info">
+          <div class="team-name">Dra. Maira Ulloa Hernández</div>
+          <div class="team-role">Investigadora</div>
+          <div class="team-bio">PhD en CAFD, MSc Gestión Deportiva. Docente en Euncet Business School (UPC) y Universidad Alfonso X el Sabio.</div>
+          <div class="team-links">
+            <a href="https://www.researchgate.net/profile/Maira-Ulloa-Hernandez" target="_blank" class="tl tl-rg" title="ResearchGate"><i class="fas fa-graduation-cap"></i></a>
+            <a href="https://orcid.org/0000-0002-4865-1676" target="_blank" class="tl tl-oc" title="ORCID"><i class="fab fa-orcid"></i></a>
+            <a href="https://scholar.google.es/citations?user=S6pz3fIAAA&hl=es" target="_blank" class="tl tl-gs" title="Google Scholar"><i class="fab fa-google"></i></a>
+            <a href="https://www.linkedin.com/in/maira-ulloa-hern%C3%A1ndez" target="_blank" class="tl tl-li" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="team-card fade-up">
+        <img src="Fotos_Equip/Fotografia_Sara-removebg-preview.png" alt="Sara Hamza Mayora" class="team-photo">
+        <div class="team-info">
+          <div class="team-name">Sara Hamza Mayora</div>
+          <div class="team-role">Investigadora predoctoral</div>
+          <div class="team-bio">Doctoranda en CAFD, MSc Gestión Deportiva y MSc Formación del Profesorado (INEFC – UdL).</div>
+          <div class="team-links">
+            <a href="https://www.researchgate.net/profile/Sara-Hamza-Mayora-2" target="_blank" class="tl tl-rg" title="ResearchGate"><i class="fas fa-graduation-cap"></i></a>
+            <a href="https://orcid.org/0000-0002-8405-2769" target="_blank" class="tl tl-oc" title="ORCID"><i class="fab fa-orcid"></i></a>
+            <a href="https://scholar.google.com/citations?user=JbZgLvMAAAAJ&hl=es" target="_blank" class="tl tl-gs" title="Google Scholar"><i class="fab fa-google"></i></a>
+            <a href="https://www.linkedin.com/in/sarahamzamayora/" target="_blank" class="tl tl-li" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="team-card fade-up">
+        <img src="Fotos_Equip/Agustín_Cebe-removebg-preview.png" alt="Agustín Cebe" class="team-photo">
+        <div class="team-info">
+          <div class="team-name">Agustín Cebe</div>
+          <div class="team-role">Investigador</div>
+          <div class="team-bio">Especialista en análisis territorial y gestión de espacios naturales protegidos.</div>
+          <div class="team-links"></div>
+        </div>
+      </div>
+      <div class="team-card fade-up">
+        <img src="Fotos_Equip/Ilargi-removebg-preview.png" alt="Ilargi López González" class="team-photo">
+        <div class="team-info">
+          <div class="team-name">Ilargi López González</div>
+          <div class="team-role">Investigadora</div>
+          <div class="team-bio">Investigadora en el ámbito del uso público en espacios naturales protegidos.</div>
+          <div class="team-links"></div>
+        </div>
+      </div>
+      <div class="team-card fade-up">
+        <img src="Fotos_Equip/Marcos Vinícius.png" alt="Marcos Vinícius Ribeiro de Castro Simão" class="team-photo">
+        <div class="team-info">
+          <div class="team-name">Marcos V. Ribeiro de Castro Simão</div>
+          <div class="team-role">Doctorando / Colaborador científico</div>
+          <div class="team-bio">Profesor de Ingeniería Forestal (IFAM, Brasil). Máster en Ciencias de Bosques Tropicales (INPA). Doctorando en la Universitat de Lleida.</div>
+          <div class="team-links">
+            <a href="https://www.researchgate.net/profile/Marcos-Vinicius-Simao" target="_blank" class="tl tl-rg" title="ResearchGate"><i class="fas fa-graduation-cap"></i></a>
+            <a href="https://orcid.org/0000-0002-8738-6350" target="_blank" class="tl tl-oc" title="ORCID"><i class="fab fa-orcid"></i></a>
+            <a href="https://scholar.google.es/citations?user=hodxVO4AAAAJ&hl=es&oi=ao" target="_blank" class="tl tl-gs" title="Google Scholar"><i class="fab fa-google"></i></a>
+            <a href="https://www.scopus.com/authid/detail.uri?authorId=59682707900" target="_blank" class="tl tl-sc" title="Scopus"></a>
+            <a href="http://lattes.cnpq.br/0371932049521169" target="_blank" class="tl tl-lt" title="Curriculum Lattes"></a>
+          </div>
+        </div>
+      </div>
+      <div class="team-card fade-up">
+        <img src="Fotos_Equip/Carlos_Pereira-removebg-preview.png" alt="Dr. Carlos Pereira da Silva" class="team-photo">
+        <div class="team-info">
+          <div class="team-name">Dr. Carlos Pereira da Silva</div>
+          <div class="team-role">Colaborador científico</div>
+          <div class="team-bio">PhD en Geografía. Profesor Associado NOVAFCSH, Universidade Nova de Lisboa, Portugal.</div>
+          <div class="team-links">
+            <a href="https://www.researchgate.net/profile/Carlos_Silva59" target="_blank" class="tl tl-rg" title="ResearchGate"><i class="fas fa-graduation-cap"></i></a>
+            <a href="https://orcid.org/0000-0003-1613-4321" target="_blank" class="tl tl-oc" title="ORCID"><i class="fab fa-orcid"></i></a>
+            <a href="https://scholar.google.pt/citations?user=4DaobpAAAAAJ&hl=en" target="_blank" class="tl tl-gs" title="Google Scholar"><i class="fab fa-google"></i></a>
+            <a href="https://www.linkedin.com/in/carlos-pereira-da-silva-32497470/" target="_blank" class="tl tl-li" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SERVICES ═════════════════════════════════════ -->
+<section id="servicios" class="section">
+  <div class="container">
+    <div class="svc-intro">
+      <div class="fade-up">
+        <span class="sec-label" data-i18n="svc.label">Qué hacemos</span>
+        <h2 class="sec-title" data-i18n="svc.title">Un modelo basado en<br>evidencia científica</h2>
+      </div>
+      <div class="fade-up">
+        <p class="sec-sub" data-i18n="svc.sub">Desarrollamos metodologías de evaluación, seguimiento y apoyo a la toma de decisiones basadas en datos para la gestión del uso público en espacios naturales protegidos. Nuestra intervención abarca todas las fases del proceso: desde la evaluación inicial y el diagnóstico hasta el apoyo técnico en la toma de decisiones.</p>
+      </div>
+    </div>
+
+    <!-- Servicio 1 -->
+    <div class="svc-row fade-up">
+      <div class="svc-img">
+        <img src="Fotos-seleccionadas/Trabajo de campo encuestas.jpg" alt="Análisis de visitantes - encuestas campo">
+      </div>
+      <div class="svc-body">
+        <div class="svc-num">01</div>
+        <div class="svc-icon-wrap">
+          <div class="svc-icon"><i class="fas fa-chart-line"></i></div>
+          <span class="sec-label" style="margin:0;" data-i18n="svc.1.lbl">Afluencia y visitantes</span>
+        </div>
+        <div class="svc-title" data-i18n="s1.title">Análisis de afluencia, distribución de usos y caracterización de visitantes</div>
+        <div class="svc-desc" data-i18n="s1.desc">Los Espacios Naturales Protegidos requieren una gestión del uso público rigurosa para garantizar tanto su conservación como el disfrute responsable. Este servicio determina el número de visitantes, la distribución espacio-temporal y la caracterización del perfil de los visitantes, desarrollando un sistema de seguimiento de afluencia a medida.</div>
+        <ul class="svc-bullets">
+          <li data-i18n="s1.b1">Metodología OVMS (Farías-Torbidoni et al., 2022)</li>
+          <li data-i18n="s1.b2">Aforadores automáticos in situ y encuestas presenciales</li>
+          <li data-i18n="s1.b3">Análisis GIS y datos voluntarios geográficos (VGI)</li>
+          <li data-i18n="s1.b4">Diseño de sistema de monitoreo continuo de visitantes</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Servicio 2 -->
+    <div class="svc-row reverse fade-up">
+      <div class="svc-img">
+        <img src="Fotos-seleccionadas/Uso publico/Cim Pedraforca 2.jpeg" alt="Masificación en Pedraforca - capacidad de acogida">
+      </div>
+      <div class="svc-body">
+        <div class="svc-num">02</div>
+        <div class="svc-icon-wrap">
+          <div class="svc-icon"><i class="fas fa-mountain"></i></div>
+          <span class="sec-label" style="margin:0;" data-i18n="svc.2.lbl">Capacidad de acogida</span>
+        </div>
+        <div class="svc-title" data-i18n="s2.title">Evaluación de la capacidad de acogida y carga de uso público</div>
+        <div class="svc-desc" data-i18n="s2.desc">El incremento del turismo de naturaleza ha evidenciado situaciones de masificación en entornos vulnerables. Este servicio define umbrales de referencia para la gestión, determinando el número máximo de visitantes simultáneos sin generar impactos negativos en el medio físico, económico o sociocultural, ni reducir la calidad de la experiencia de visita.</div>
+        <ul class="svc-bullets">
+          <li data-i18n="s2.b1">Metodología de Capacidad de Carga Turística (Cifuentes, 1992)</li>
+          <li data-i18n="s2.b2">Evaluación de Masificación en Cimas de Montaña (EMCM) — metodología propia</li>
+          <li data-i18n="s2.b3">Adaptada a escalada deportiva, espacios periurbanos y entornos marítimo-terrestres</li>
+          <li data-i18n="s2.b4">Indicadores y recomendaciones de gestión adaptativa</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Servicio 3 -->
+    <div class="svc-row fade-up">
+      <div class="svc-img">
+        <img src="Fotos-seleccionadas/Uso publico/MONCAYO TRAIL_ FOTO INEFC CHALECO.jpeg" alt="Eventos deportivos en entornos naturales - Moncayo Trail">
+      </div>
+      <div class="svc-body">
+        <div class="svc-num">03</div>
+        <div class="svc-icon-wrap">
+          <div class="svc-icon"><i class="fas fa-running"></i></div>
+          <span class="sec-label" style="margin:0;" data-i18n="svc.3.lbl">Eventos deportivos</span>
+        </div>
+        <div class="svc-title" data-i18n="s3.title">Diagnóstico socioambiental de eventos deportivos en entornos naturales</div>
+        <div class="svc-desc" data-i18n="s3.desc">El número de eventos deportivos en espacios naturales —carreras de montaña, ciclismo BTT, trail running— no ha dejado de crecer, con una incidencia directa sobre la Red Natura 2000. Este servicio ofrece una evaluación integral de los posibles impactos ambientales y sociales asociados a la realización de estos eventos, especialmente críticos en primavera durante periodos de cría, nidificación y floración.</div>
+        <ul class="svc-bullets">
+          <li data-i18n="s3.b1">Cuantificación de impactos ambientales sobre flora, fauna y suelo</li>
+          <li data-i18n="s3.b2">Protocolo de seguimiento longitudinal de impactos</li>
+          <li data-i18n="s3.b3">Análisis del perfil social de participantes y espectadores</li>
+          <li data-i18n="s3.b4">Recomendaciones para mitigación y desarrollo sostenible del evento</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Servicio 4 -->
+    <div class="svc-row reverse fade-up">
+      <div class="svc-img">
+        <img src="Fotos-seleccionadas/Señalización/Resultados/Señalización Cap de Creus.jpeg" alt="Red de senderos - Cap de Creus">
+      </div>
+      <div class="svc-body">
+        <div class="svc-num">04</div>
+        <div class="svc-icon-wrap">
+          <div class="svc-icon"><i class="fas fa-route"></i></div>
+          <span class="sec-label" style="margin:0;" data-i18n="svc.4.lbl">Red de senderos</span>
+        </div>
+        <div class="svc-title" data-i18n="s4.title">Evaluación del estado funcional y ambiental de redes de senderos y caminos</div>
+        <div class="svc-desc" data-i18n="s4.desc">El incremento de la visita recreativa y deportiva ha intensificado la presión sobre las redes de senderos, generando erosión, trazados informales y pérdida de funcionalidad. Este servicio proporciona una diagnosis objetiva y operativa que permite pasar de la percepción a la gestión planificada, analizando tramo a tramo el estado real de la red.</div>
+        <ul class="svc-bullets">
+          <li data-i18n="s4.b1">Metodología adaptada de Tomczyk et al. (2023) para evaluación de condiciones</li>
+          <li data-i18n="s4.b2">Georreferenciación GPS y mapas de estado con SIG</li>
+          <li data-i18n="s4.b3">Identificación y priorización de puntos críticos de deterioro</li>
+          <li data-i18n="s4.b4">Plan de actuación: drenaje, corrección erosiva y restauración ecológica</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Servicio 5 -->
+    <div class="svc-row fade-up">
+      <div class="svc-img">
+        <img src="Fotos-seleccionadas/Uso publico/Mobilitat Guilleries.jpeg" alt="Movilidad turística - Guilleries">
+      </div>
+      <div class="svc-body">
+        <div class="svc-num">05</div>
+        <div class="svc-icon-wrap">
+          <div class="svc-icon"><i class="fas fa-car-side"></i></div>
+          <span class="sec-label" style="margin:0;" data-i18n="svc.5.lbl">Movilidad turística</span>
+        </div>
+        <div class="svc-title" data-i18n="s5.title">Análisis de movilidad turística en espacios naturales</div>
+        <div class="svc-desc" data-i18n="s5.desc">El aumento de visitantes genera congestión en rutas y accesos, con impactos negativos sobre el entorno natural y la calidad de la visita. Este servicio analiza en detalle los patrones de movilidad turística, identificando zonas más frecuentadas, modos de transporte utilizados y la predisposición a utilizar alternativas sostenibles, con el fin de diseñar un Plan de Movilidad adaptado a cada espacio.</div>
+        <ul class="svc-bullets">
+          <li data-i18n="s5.b1">Afluencia y caracterización detallada del visitante</li>
+          <li data-i18n="s5.b2">Análisis de la oferta de transporte público existente</li>
+          <li data-i18n="s5.b3">Identificación del lugar de residencia habitual de los visitantes</li>
+          <li data-i18n="s5.b4">Diseño de Plan de Movilidad hacia desplazamientos sostenibles</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Servicio 6 -->
+    <div class="svc-row reverse fade-up">
+      <div class="svc-img">
+        <img src="Fotos-seleccionadas/Paisajes/Petjada CO2.png" alt="Huella de carbono - sostenibilidad">
+      </div>
+      <div class="svc-body">
+        <div class="svc-num">06</div>
+        <div class="svc-icon-wrap">
+          <div class="svc-icon"><i class="fas fa-leaf"></i></div>
+          <span class="sec-label" style="margin:0;" data-i18n="svc.6.lbl">Huella de carbono</span>
+        </div>
+        <div class="svc-title" data-i18n="s6.title">Cálculo y evaluación de la huella de carbono asociada a actividades y eventos</div>
+        <div class="svc-desc" data-i18n="s6.desc">En el contexto actual de crisis climática, entender y gestionar la huella de carbono asociada a los desplazamientos de visitantes y a los establecimientos y servicios adheridos a un espacio natural es crucial para asegurar su conservación y uso responsable. Este servicio proporciona una herramienta esencial para la gestión sostenible del territorio.</div>
+        <ul class="svc-bullets">
+          <li data-i18n="s6.b1">Metodología MITECO "Guía para el cálculo de la huella de carbono"</li>
+          <li data-i18n="s6.b2">Cálculo de emisiones por desplazamientos de visitantes</li>
+          <li data-i18n="s6.b3">Evaluación de establecimientos y servicios adheridos al espacio</li>
+          <li data-i18n="s6.b4">Plan de mejora para reducción progresiva de emisiones</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Servicio 7 -->
+    <div class="svc-row fade-up">
+      <div class="svc-img">
+        <img src="Fotos-seleccionadas/Proceso participativo Montsant.jpg" alt="Proceso participativo Montsant">
+      </div>
+      <div class="svc-body">
+        <div class="svc-num">07</div>
+        <div class="svc-icon-wrap">
+          <div class="svc-icon"><i class="fas fa-people-group"></i></div>
+          <span class="sec-label" style="margin:0;" data-i18n="svc.7.lbl">Procesos participativos</span>
+        </div>
+        <div class="svc-title" data-i18n="s7.title">Diseño y dinamización de procesos participativos en gestión del uso público</div>
+        <div class="svc-desc" data-i18n="s7.desc">La gestión del uso público en áreas naturales protegidas requiere no solo un enfoque técnico, sino también la implicación activa de la población local, visitantes y otros actores involucrados. Este servicio facilita la participación efectiva de todos los agentes en la toma de decisiones, fomentando el diálogo, la colaboración y el consenso entre administraciones, asociaciones locales y grupos excursionistas.</div>
+        <ul class="svc-bullets">
+          <li data-i18n="s7.b1">Implementación de metodologías participativas contrastadas</li>
+          <li data-i18n="s7.b2">Dinamización de mesas de trabajo con stakeholders</li>
+          <li data-i18n="s7.b3">Elaboración de planes y estrategias de gestión consensuados</li>
+          <li data-i18n="s7.b4">Fortalecimiento del compromiso y la responsabilidad compartida</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ METHODOLOGY ══════════════════════════════════ -->
+<section id="metodologia">
+  <div class="container">
+    <div class="text-center fade-up">
+      <span class="sec-label" data-i18n="meth.label">Metodología</span>
+      <h2 class="sec-title" data-i18n="meth.title">Nuestro modelo Input–Output</h2>
+      <p class="sec-sub mx-auto" data-i18n="meth.sub">Un proceso estructurado en tres etapas que garantiza rigor científico y resultados operativos para la gestión.</p>
+    </div>
+    <div class="method-grid">
+      <div class="method-step fade-up">
+        <div class="method-num">1</div>
+        <div class="method-title" data-i18n="meth.s1.t">Entrada de datos (Input)</div>
+        <div class="method-desc" data-i18n="meth.s1.d">Aforadores automáticos, encuestas, entrevistas, SIG y datos VGI. Recopilamos información objetiva sobre afluencia, distribución espacial, perfiles de visitantes y condiciones ambientales.</div>
+      </div>
+      <div class="method-step fade-up">
+        <div class="method-num">2</div>
+        <div class="method-title" data-i18n="meth.s2.t">Modelización y análisis</div>
+        <div class="method-desc" data-i18n="meth.s2.d">Integramos los datos en herramientas de análisis territorial y estadístico para identificar patrones, tendencias, puntos críticos y escenarios de evolución del uso público.</div>
+      </div>
+      <div class="method-step fade-up">
+        <div class="method-num">3</div>
+        <div class="method-title" data-i18n="meth.s3.t">Resultados (Output)</div>
+        <div class="method-desc" data-i18n="meth.s3.d">Indicadores claros y recomendaciones operativas que facilitan una gestión adaptativa, rigurosa y orientada a la sostenibilidad del espacio natural.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PROJECTS MAP ══════════════════════════════════ -->
+<section id="proyectos" class="section">
+  <div class="container">
+    <div class="fade-up">
+      <span class="sec-label" data-i18n="proj.label">Proyectos</span>
+      <h2 class="sec-title" data-i18n="proj.title">Mapa de espacios naturales estudiados</h2>
+      <p class="sec-sub" data-i18n="proj.sub">Haz clic en los marcadores para ver el tipo de estudio realizado en cada espacio natural protegido.</p>
+    </div>
+    <div class="map-wrap">
+      <arcgis-embedded-map item-id="011ff3482ba54ebfb36baf8cf53009c6" theme="light" bookmarks-enabled heading-enabled legend-enabled information-enabled center="0.7401346030295193,41.67979136719626" scale="2311162.217155" portal-url="https://udl.maps.arcgis.com"></arcgis-embedded-map>
+    </div>
+  </div>
+</section>
+
+<!-- ══ GALLERY ═══════════════════════════════════════ -->
+<div class="gallery-section">
+  <div class="container">
+    <div class="gallery-grid">
+      <div class="gal-item"><img src="Fotos-seleccionadas/Equipo/ESPARC_2022 foto grupo.jpg" alt="Equipo EcoData en ESPARC 2022"></div>
+      <div class="gal-item"><img src="Fotos-seleccionadas/Trabajos de campo/Recollida info Siurana.jpg" alt="Trabajo de campo Siurana"></div>
+      <div class="gal-item"><img src="Fotos-seleccionadas/UICN Fotografia.jpg" alt="UICN"></div>
+      <div class="gal-item"><img src="Fotos-seleccionadas/Trabajos de campo/IMG_2482.JPG" alt="Trabajo de campo"></div>
+      <div class="gal-item"><img src="Fotos-seleccionadas/Uso publico/Exchange Irlanda Foto 2.jpg" alt="Exchange Irlanda"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ INSTAGRAM ════════════════════════════════════ -->
+<section id="instagram">
+  <div class="container">
+    <div class="ig-head">
+      <div>
+        <span class="sec-label" style="color:rgba(220,228,184,.7);">Instagram</span>
+        <h2 class="sec-title" style="color:#fff;" data-i18n="ig.title">Síguenos en @ecodata_natura</h2>
+      </div>
+      <a href="https://www.instagram.com/ecodata_natura" target="_blank" class="btn-primary">
+        <i class="fab fa-instagram"></i><span data-i18n="ig.cta">Ver perfil</span>
+      </a>
+    </div>
+    <div class="ig-grid">
+      <a href="https://www.instagram.com/ecodata_natura" target="_blank" class="ig-cell">
+        <img src="Fotos-seleccionadas/1. Pasarla.jpeg" alt="EcoData Instagram">
+        <div class="ig-over"><i class="fab fa-instagram"></i></div>
+      </a>
+      <a href="https://www.instagram.com/ecodata_natura" target="_blank" class="ig-cell">
+        <img src="Fotos-seleccionadas/Equipo/Fotos MMV8 (4).jpg" alt="EcoData Instagram">
+        <div class="ig-over"><i class="fab fa-instagram"></i></div>
+      </a>
+      <a href="https://www.instagram.com/ecodata_natura" target="_blank" class="ig-cell">
+        <img src="Fotos-seleccionadas/Trabajos de campo/Formació TC CAP DE CREUS.jpeg" alt="EcoData Instagram">
+        <div class="ig-over"><i class="fab fa-instagram"></i></div>
+      </a>
+      <a href="https://www.instagram.com/ecodata_natura" target="_blank" class="ig-cell">
+        <img src="Fotos-seleccionadas/Paisajes/Paisaje Montsant.JPG" alt="EcoData Instagram">
+        <div class="ig-over"><i class="fab fa-instagram"></i></div>
+      </a>
+      <a href="https://www.instagram.com/ecodata_natura" target="_blank" class="ig-cell">
+        <img src="Fotos-seleccionadas/Instrumentos/Impacto sociambiental eventos.jpg" alt="EcoData Instagram">
+        <div class="ig-over"><i class="fab fa-instagram"></i></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTACT ══════════════════════════════════════ -->
+<section id="contacto">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="fade-up">
+        <span class="sec-label" style="color:var(--g-light);" data-i18n="cnt.label">Contacto</span>
+        <h2 class="sec-title" style="color:#fff;" data-i18n="cnt.title">¿Tienes un espacio natural que gestionar?</h2>
+        <p class="ci-desc" data-i18n="cnt.desc">Contacta con nosotros para solicitar más información o una propuesta de colaboración. Atendemos a instituciones públicas, técnicos de parques naturales, empresas del sector ambiental e investigadores.</p>
+        <div class="ci-item">
+          <div class="ci-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div class="ci-detail"><strong data-i18n="cnt.addr">Sede</strong><span>Espai CEEI · Lleida, Catalunya</span></div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-icon"><i class="fas fa-envelope"></i></div>
+          <div class="ci-detail"><strong>Email</strong><a href="mailto:info@ecodatanatura.com">info@ecodatanatura.com</a></div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="1em" height="1em" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919C8.333 2.175 8.741 2.163 12 2.163zm0-2.163C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </div>
+          <div class="ci-detail"><strong>Instagram</strong><a href="https://www.instagram.com/ecodata_natura" target="_blank">@ecodata_natura</a></div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="1em" height="1em" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </div>
+          <div class="ci-detail"><strong>LinkedIn</strong><a href="https://www.linkedin.com/company/ecodata-natura" target="_blank">EcoData Natura S.L.P.</a></div>
+        </div>
+      </div>
+      <div class="contact-form fade-up">
+        <form id="contact-form" onsubmit="handleForm(event)">
+          <div class="form-row">
+            <div class="fg">
+              <label data-i18n="f.name">Nombre</label>
+              <input type="text" name="nombre" placeholder="Tu nombre" data-i18n-ph="f.name.ph" required>
+            </div>
+            <div class="fg">
+              <label data-i18n="f.org">Entidad / Organización</label>
+              <input type="text" name="organizacion" placeholder="Tu organización" data-i18n-ph="f.org.ph">
+            </div>
+          </div>
+          <div class="fg">
+            <label data-i18n="f.email">Email</label>
+            <input type="email" name="email" placeholder="tu@email.com" required>
+          </div>
+          <div class="fg">
+            <label data-i18n="f.svc">Servicio de interés</label>
+            <select name="servicio">
+              <option value="" data-i18n="opt.0">Selecciona un servicio...</option>
+              <option data-i18n="opt.1">Análisis de afluencia y visitantes</option>
+              <option data-i18n="opt.2">Capacidad de acogida</option>
+              <option data-i18n="opt.3">Diagnóstico eventos deportivos</option>
+              <option data-i18n="opt.4">Evaluación de senderos</option>
+              <option data-i18n="opt.5">Análisis de movilidad</option>
+              <option data-i18n="opt.6">Huella de carbono</option>
+              <option data-i18n="opt.7">Procesos participativos</option>
+              <option data-i18n="opt.8">Otro / Consulta general</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label data-i18n="f.msg">Mensaje</label>
+            <textarea name="mensaje" placeholder="Cuéntanos sobre tu espacio natural y qué necesitas..." data-i18n-ph="f.msg.ph" required></textarea>
+          </div>
+          <button type="submit" class="btn-primary" style="width:100%;justify-content:center;">
+            <i class="fas fa-paper-plane"></i><span data-i18n="f.send">Enviar consulta</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">
+          <img src="logo/Logo V blanco.png" alt="EcoData Natura" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+          <span style="display:none;font-family:'Jost',sans-serif;font-weight:700;color:#fff;font-size:1rem;">EcoData Natura S.L.P.</span>
+        </div>
+        <p class="footer-brand-text" data-i18n="foot.brand">Investigación aplicada para la gestión del uso público en espacios naturales protegidos.<br>Spin-off del INEFC · Lleida, 2024.</p>
+        <div class="footer-soc">
+          <a href="https://www.instagram.com/ecodata_natura" target="_blank" class="soc-btn" title="Instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="1em" height="1em" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919C8.333 2.175 8.741 2.163 12 2.163zm0-2.163C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/company/ecodata-natura" target="_blank" class="soc-btn" title="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="1em" height="1em" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="https://www.researchgate.net" target="_blank" class="soc-btn" title="ResearchGate"><i class="fas fa-graduation-cap"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="foot.nav">Navegación</h4>
+        <ul>
+          <li><a href="#inicio" data-i18n="nav.home">Inicio</a></li>
+          <li><a href="#nosotros" data-i18n="nav.about">Nosotros</a></li>
+          <li><a href="#equipo" data-i18n="team.label">Equipo</a></li>
+          <li><a href="#servicios" data-i18n="nav.services">Servicios</a></li>
+          <li><a href="#proyectos" data-i18n="nav.projects">Proyectos</a></li>
+          <li><a href="#contacto" data-i18n="nav.contact">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="foot.svc">Servicios</h4>
+        <ul>
+          <li><a href="#servicios" data-i18n="svc.1.lbl">Afluencia y visitantes</a></li>
+          <li><a href="#servicios" data-i18n="svc.2.lbl">Capacidad de acogida</a></li>
+          <li><a href="#servicios" data-i18n="svc.3.lbl">Eventos deportivos</a></li>
+          <li><a href="#servicios" data-i18n="svc.4.lbl">Red de senderos</a></li>
+          <li><a href="#servicios" data-i18n="svc.5.lbl">Movilidad turística</a></li>
+          <li><a href="#servicios" data-i18n="svc.6.lbl">Huella de carbono</a></li>
+          <li><a href="#servicios" data-i18n="svc.7.lbl">Procesos participativos</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="foot.legal">Legal</h4>
+        <ul>
+          <li><a href="#" data-i18n="foot.privacy">Política de privacidad</a></li>
+          <li><a href="#" data-i18n="foot.cookies">Política de cookies</a></li>
+          <li><a href="#" data-i18n="foot.notice">Aviso legal</a></li>
+        </ul>
+        <h4 style="margin-top:1.4rem;" data-i18n="foot.linked">Vinculados a</h4>
+        <ul>
+          <li><a href="https://www.inefc.cat" target="_blank">INEFC Lleida</a></li>
+          <li><a href="https://www.udl.cat" target="_blank">Universitat de Lleida</a></li>
+          <li><a href="#">Grupo GISEAFE</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p data-i18n="foot.copy">© 2024 EcoData Natura S.L.P. Todos los derechos reservados.</p>
+      <p data-i18n="foot.tagline">Diseñado para la gestión sostenible de los espacios naturales protegidos.</p>
+    </div>
+  </div>
+</footer>
+
+<a href="#contacto" class="fab" title="Contactar con EcoData Natura"><i class="fas fa-envelope"></i></a>
+
+<!-- SCRIPTS -->
+<script>
+/* ── HERO CAROUSEL ───────────────────────── */
+let slide = 0;
+const slides = document.querySelectorAll('.hero-slide');
+const dots   = document.querySelectorAll('.hero-dot');
+let timer;
+function goSlide(n) {
+  slides[slide].classList.remove('active'); dots[slide].classList.remove('active');
+  slide = (n + slides.length) % slides.length;
+  slides[slide].classList.add('active'); dots[slide].classList.add('active');
+}
+function startTimer() { timer = setInterval(() => goSlide(slide + 1), 5500); }
+dots.forEach((d,i) => d.addEventListener('click', () => { clearInterval(timer); goSlide(i); startTimer(); }));
+startTimer();
+
+/* ── NAVBAR ──────────────────────────────── */
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', scrollY > 50);
+});
+
+/* ── MOBILE NAV ──────────────────────────── */
+function toggleNav() { document.getElementById('mobNav').classList.toggle('open'); }
+
+/* ── FADE-UP ─────────────────────────────── */
+const fadeObs = new IntersectionObserver((es) => es.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }), { threshold: .12 });
+document.querySelectorAll('.fade-up').forEach(el => fadeObs.observe(el));
+
+/* ── COUNTERS ────────────────────────────── */
+const cntObs = new IntersectionObserver((es) => {
+  es.forEach(e => {
+    if (e.isIntersecting && !e.target.dataset.done) {
+      e.target.dataset.done = 1;
+      const target = +e.target.dataset.target, step = target / 60;
+      let cur = 0;
+      const t = setInterval(() => { cur += step; if (cur >= target) { cur = target; clearInterval(t); } e.target.textContent = Math.floor(cur); }, 20);
+    }
+  });
+}, { threshold: .5 });
+document.querySelectorAll('.counter').forEach(el => cntObs.observe(el));
+
+/* ── FORM → Formspree ────────────────────── */
+function handleForm(e) {
+  e.preventDefault();
+  const form = e.target;
+  const btn  = form.querySelector('button[type=submit]');
+  btn.disabled = true;
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+  fetch('https://formspree.io/f/xlgwobaw', {
+    method: 'POST',
+    headers: { 'Accept': 'application/json' },
+    body: new FormData(form)
+  })
+  .then(r => {
+    if (r.ok) {
+      btn.innerHTML = '<i class="fas fa-check"></i> ¡Consulta enviada!';
+      btn.style.background = '#5A8A3D';
+      form.reset();
+      setTimeout(() => { btn.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar consulta'; btn.style.background = ''; btn.disabled = false; }, 3500);
+    } else {
+      btn.innerHTML = '<i class="fas fa-times"></i> Error. Inténtalo de nuevo.';
+      btn.style.background = '#c0392b';
+      setTimeout(() => { btn.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar consulta'; btn.style.background = ''; btn.disabled = false; }, 3500);
+    }
+  })
+  .catch(() => {
+    btn.innerHTML = '<i class="fas fa-times"></i> Error de conexión.';
+    btn.style.background = '#c0392b';
+    setTimeout(() => { btn.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar consulta'; btn.style.background = ''; btn.disabled = false; }, 3500);
+  });
+}
+
+/* ── I18N ─────────────────────────────────── */
+const T = {
+  es: {
+    /* NAV */
+    'nav.home':'Inicio','nav.about':'Nosotros','nav.services':'Servicios','nav.projects':'Proyectos','nav.contact':'Contacto',
+    /* HERO */
+    'hero.badge':'Spin-off INEFC · Lleida · 2024',
+    'hero.title':'Cuidar los espacios naturales<br>empieza por comprenderlos',
+    'hero.sub':'Investigación aplicada para la gestión del uso público en espacios naturales protegidos. Datos precisos para decisiones sostenibles.',
+    'hero.cta1':'Nuestros servicios','hero.cta2':'Contactar',
+    /* ABOUT */
+    'about.label':'Quiénes somos','about.title':'Una spin-off nacida de<br>30 años de investigación aplicada',
+    'about.p1':'EcoData Natura es una spin-off del Instituto Nacional de Educación Física de Cataluña (INEFC) - Centro de Lleida, creada en 2024 en el marco del programa <em>INEFC Emprèn</em> y con el acompañamiento del <em>CEEI Lleida</em>, fruto de más de 30 años de investigación aplicada en el ámbito del uso público en espacios naturales protegidos.',
+    'about.p2':'El proyecto tiene su origen en la trayectoria de la Dra. Estela Farías Torbidoni, quien, al incorporarse al grupo de investigación <em>GISEAFE</em>, impulsa y consolida la línea de investigación <em>"Deporte, territorio y sostenibilidad en espacios naturales protegidos"</em>. A partir de este núcleo inicial, se suman el Dr. Serni Morera, el Dr. Ricardo Nogueira y el Dr. Víctor Dorado, conformando un equipo interdisciplinar con una sólida base científica y una amplia experiencia en investigación aplicada.',
+    'about.quote':'Somos una entidad especializada en estudios sobre la gestión del uso público en espacios naturales protegidos, cuya misión es contribuir a una correcta toma de decisiones mediante la identificación, recopilación y sistematización de información vinculada.',
+    'about.cta1':'Conoce el equipo','about.cta2':'Qué hacemos',
+    /* STATS */
+    'stats.projects':'Proyectos realizados','stats.articles':'Artículos científicos','stats.thesis':'Tesis doctorales','stats.years':'Años de investigación',
+    /* TEAM */
+    'team.label':'El equipo','team.title':'Multidisciplinar, riguroso y apasionado por la naturaleza',
+    'team.sub':'Combinamos conocimiento académico, experiencia profesional y pasión por la naturaleza para aportar soluciones a la gestión del uso público en espacios naturales.',
+    /* SERVICES */
+    'svc.label':'Qué hacemos','svc.title':'Un modelo basado en<br>evidencia científica',
+    'svc.sub':'Desarrollamos metodologías de evaluación, seguimiento y apoyo a la toma de decisiones basadas en datos para la gestión del uso público en espacios naturales protegidos.',
+    'svc.1.lbl':'Afluencia y visitantes',
+    's1.title':'Análisis de afluencia, distribución de usos y caracterización de visitantes',
+    's1.desc':'Los Espacios Naturales Protegidos requieren una gestión del uso público rigurosa para garantizar tanto su conservación como el disfrute responsable. Este servicio determina el número de visitantes, la distribución espacio-temporal y la caracterización del perfil de los visitantes, desarrollando un sistema de seguimiento de afluencia a medida.',
+    's1.b1':'Metodología OVMS (Farías-Torbidoni et al., 2022)','s1.b2':'Aforadores automáticos in situ y encuestas presenciales','s1.b3':'Análisis GIS y datos voluntarios geográficos (VGI)','s1.b4':'Diseño de sistema de monitoreo continuo de visitantes',
+    'svc.2.lbl':'Capacidad de acogida',
+    's2.title':'Evaluación de la capacidad de acogida y carga de uso público',
+    's2.desc':'El incremento del turismo de naturaleza ha evidenciado situaciones de masificación en entornos vulnerables. Este servicio define umbrales de referencia para la gestión, determinando el número máximo de visitantes simultáneos sin generar impactos negativos en el medio físico, económico o sociocultural, ni reducir la calidad de la experiencia de visita.',
+    's2.b1':'Metodología de Capacidad de Carga Turística (Cifuentes, 1992)','s2.b2':'Evaluación de Masificación en Cimas de Montaña (EMCM) — metodología propia','s2.b3':'Adaptada a escalada deportiva, espacios periurbanos y entornos marítimo-terrestres','s2.b4':'Indicadores y recomendaciones de gestión adaptativa',
+    'svc.3.lbl':'Eventos deportivos',
+    's3.title':'Diagnóstico socioambiental de eventos deportivos en entornos naturales',
+    's3.desc':'El número de eventos deportivos en espacios naturales —carreras de montaña, ciclismo BTT, trail running— no ha dejado de crecer, con una incidencia directa sobre la Red Natura 2000. Este servicio ofrece una evaluación integral de los posibles impactos ambientales y sociales asociados a la realización de estos eventos, especialmente críticos en primavera durante periodos de cría, nidificación y floración.',
+    's3.b1':'Cuantificación de impactos ambientales sobre flora, fauna y suelo','s3.b2':'Protocolo de seguimiento longitudinal de impactos','s3.b3':'Análisis del perfil social de participantes y espectadores','s3.b4':'Recomendaciones para mitigación y desarrollo sostenible del evento',
+    'svc.4.lbl':'Red de senderos',
+    's4.title':'Evaluación del estado funcional y ambiental de redes de senderos y caminos',
+    's4.desc':'El incremento de la visita recreativa y deportiva ha intensificado la presión sobre las redes de senderos, generando erosión, trazados informales y pérdida de funcionalidad. Este servicio proporciona una diagnosis objetiva y operativa que permite pasar de la percepción a la gestión planificada, analizando tramo a tramo el estado real de la red.',
+    's4.b1':'Metodología adaptada de Tomczyk et al. (2023) para evaluación de condiciones','s4.b2':'Georreferenciación GPS y mapas de estado con SIG','s4.b3':'Identificación y priorización de puntos críticos de deterioro','s4.b4':'Plan de actuación: drenaje, corrección erosiva y restauración ecológica',
+    'svc.5.lbl':'Movilidad turística',
+    's5.title':'Análisis de movilidad turística en espacios naturales',
+    's5.desc':'El aumento de visitantes genera congestión en rutas y accesos, con impactos negativos sobre el entorno natural y la calidad de la visita. Este servicio analiza en detalle los patrones de movilidad turística, identificando zonas más frecuentadas, modos de transporte utilizados y la predisposición a utilizar alternativas sostenibles, con el fin de diseñar un Plan de Movilidad adaptado a cada espacio.',
+    's5.b1':'Afluencia y caracterización detallada del visitante','s5.b2':'Análisis de la oferta de transporte público existente','s5.b3':'Identificación del lugar de residencia habitual de los visitantes','s5.b4':'Diseño de Plan de Movilidad hacia desplazamientos sostenibles',
+    'svc.6.lbl':'Huella de carbono',
+    's6.title':'Cálculo y evaluación de la huella de carbono asociada a actividades y eventos',
+    's6.desc':'En el contexto actual de crisis climática, entender y gestionar la huella de carbono asociada a los desplazamientos de visitantes y a los establecimientos y servicios adheridos a un espacio natural es crucial para asegurar su conservación y uso responsable. Este servicio proporciona una herramienta esencial para la gestión sostenible del territorio.',
+    's6.b1':'Metodología MITECO "Guía para el cálculo de la huella de carbono"','s6.b2':'Cálculo de emisiones por desplazamientos de visitantes','s6.b3':'Evaluación de establecimientos y servicios adheridos al espacio','s6.b4':'Plan de mejora para reducción progresiva de emisiones',
+    'svc.7.lbl':'Procesos participativos',
+    's7.title':'Diseño y dinamización de procesos participativos en gestión del uso público',
+    's7.desc':'La gestión del uso público en áreas naturales protegidas requiere no solo un enfoque técnico, sino también la implicación activa de la población local, visitantes y otros actores involucrados. Este servicio facilita la participación efectiva de todos los agentes en la toma de decisiones, fomentando el diálogo, la colaboración y el consenso entre administraciones, asociaciones locales y grupos excursionistas.',
+    's7.b1':'Implementación de metodologías participativas contrastadas','s7.b2':'Dinamización de mesas de trabajo con stakeholders','s7.b3':'Elaboración de planes y estrategias de gestión consensuados','s7.b4':'Fortalecimiento del compromiso y la responsabilidad compartida',
+    /* METHODOLOGY */
+    'meth.label':'Metodología','meth.title':'Nuestro modelo Input–Output',
+    'meth.sub':'Un proceso estructurado en tres etapas que garantiza rigor científico y resultados operativos para la gestión.',
+    'meth.s1.t':'Entrada de datos (Input)','meth.s1.d':'Aforadores automáticos, encuestas, entrevistas, SIG y datos VGI. Recopilamos información objetiva sobre afluencia, distribución espacial, perfiles de visitantes y condiciones ambientales.',
+    'meth.s2.t':'Modelización y análisis','meth.s2.d':'Integramos los datos en herramientas de análisis territorial y estadístico para identificar patrones, tendencias, puntos críticos y escenarios de evolución del uso público.',
+    'meth.s3.t':'Resultados (Output)','meth.s3.d':'Indicadores claros y recomendaciones operativas que facilitan una gestión adaptativa, rigurosa y orientada a la sostenibilidad del espacio natural.',
+    /* PROJECTS */
+    'proj.label':'Proyectos','proj.title':'Mapa de espacios naturales estudiados',
+    'proj.sub':'Haz clic en los marcadores para ver el tipo de estudio realizado en cada espacio natural protegido.',
+    'map.leg.done':'Proyecto finalizado','map.leg.current':'Proyecto en curso',
+    /* INSTAGRAM */
+    'ig.title':'Síguenos en @ecodata_natura','ig.cta':'Ver perfil',
+    /* CONTACT */
+    'cnt.label':'Contacto','cnt.title':'¿Tienes un espacio natural que gestionar?',
+    'cnt.desc':'Contacta con nosotros para solicitar más información o una propuesta de colaboración. Atendemos a instituciones públicas, técnicos de parques naturales, empresas del sector ambiental e investigadores.',
+    'cnt.addr':'Sede',
+    'f.name':'Nombre','f.org':'Entidad / Organización','f.email':'Email','f.svc':'Servicio de interés','f.msg':'Mensaje','f.send':'Enviar consulta',
+    'f.name.ph':'Tu nombre','f.org.ph':'Tu organización','f.msg.ph':'Cuéntanos sobre tu espacio natural y qué necesitas...',
+    'opt.0':'Selecciona un servicio...','opt.1':'Análisis de afluencia y visitantes','opt.2':'Capacidad de acogida','opt.3':'Diagnóstico eventos deportivos','opt.4':'Evaluación de senderos','opt.5':'Análisis de movilidad','opt.6':'Huella de carbono','opt.7':'Procesos participativos','opt.8':'Otro / Consulta general',
+    /* FOOTER */
+    'foot.brand':'Investigación aplicada para la gestión del uso público en espacios naturales protegidos.<br>Spin-off del INEFC · Lleida, 2024.',
+    'foot.nav':'Navegación','foot.svc':'Servicios','foot.legal':'Legal','foot.linked':'Vinculados a',
+    'foot.privacy':'Política de privacidad','foot.cookies':'Política de cookies','foot.notice':'Aviso legal',
+    'foot.copy':'© 2024 EcoData Natura S.L.P. Todos los derechos reservados.',
+    'foot.tagline':'Diseñado para la gestión sostenible de los espacios naturales protegidos.',
+  },
+  ca: {
+    /* NAV */
+    'nav.home':'Inici','nav.about':'Nosaltres','nav.services':'Serveis','nav.projects':'Projectes','nav.contact':'Contacte',
+    /* HERO */
+    'hero.badge':'Spin-off INEFC · Lleida · 2024',
+    'hero.title':'Cuidar els espais naturals<br>comença per comprendre\'ls',
+    'hero.sub':'Recerca aplicada per a la gestió de l\'ús públic en espais naturals protegits. Dades precises per a decisions sostenibles.',
+    'hero.cta1':'Els nostres serveis','hero.cta2':'Contactar',
+    /* ABOUT */
+    'about.label':'Qui som','about.title':'Una spin-off nascuda de<br>30 anys de recerca aplicada',
+    'about.p1':'EcoData Natura és una spin-off de l\'Institut Nacional d\'Educació Física de Catalunya (INEFC) - Centre de Lleida, creada el 2024 en el marc del programa <em>INEFC Emprèn</em> i amb l\'acompanyament del <em>CEEI Lleida</em>, fruit de més de 30 anys de recerca aplicada en l\'àmbit de l\'ús públic en espais naturals protegits.',
+    'about.p2':'El projecte té el seu origen en la trajectòria de la Dra. Estela Farías Torbidoni, qui, en incorporar-se al grup de recerca <em>GISEAFE</em>, impulsa i consolida la línia de recerca <em>"Esport, territori i sostenibilitat en espais naturals protegits"</em>. A partir d\'aquest nucli inicial, s\'hi sumen el Dr. Serni Morera, el Dr. Ricardo Nogueira i el Dr. Víctor Dorado, conformant un equip interdisciplinari amb una sòlida base científica i una àmplia experiència en recerca aplicada.',
+    'about.quote':'Som una entitat especialitzada en estudis sobre la gestió de l\'ús públic en espais naturals protegits, la missió de la qual és contribuir a una correcta presa de decisions mitjançant la identificació, la recopilació i la sistematització d\'informació vinculada.',
+    'about.cta1':'Coneix l\'equip','about.cta2':'Què fem',
+    /* STATS */
+    'stats.projects':'Projectes realitzats','stats.articles':'Articles científics','stats.thesis':'Tesis doctorals','stats.years':'Anys de recerca',
+    /* TEAM */
+    'team.label':'L\'equip','team.title':'Multidisciplinar, rigorós i apassionat per la natura',
+    'team.sub':'Combinem coneixement acadèmic, experiència professional i passió per la natura per aportar solucions a la gestió de l\'ús públic en espais naturals.',
+    /* SERVICES */
+    'svc.label':'Què fem','svc.title':'Un model basat en<br>evidència científica',
+    'svc.sub':'Desenvolupem metodologies d\'avaluació, seguiment i suport a la presa de decisions basades en dades per a la gestió de l\'ús públic en espais naturals protegits.',
+    'svc.1.lbl':'Afluència i visitants',
+    's1.title':'Anàlisi d\'afluència, distribució d\'usos i caracterització de visitants',
+    's1.desc':'Els Espais Naturals Protegits requereixen una gestió de l\'ús públic rigorosa per garantir tant la seva conservació com el gaudiment responsable. Aquest servei determina el nombre de visitants, la distribució espacio-temporal i la caracterització del perfil dels visitants, tot desenvolupant un sistema de seguiment d\'afluència a mida.',
+    's1.b1':'Metodologia OVMS (Farías-Torbidoni et al., 2022)','s1.b2':'Aforadors automàtics in situ i enquestes presencials','s1.b3':'Anàlisi SIG i dades voluntàries geogràfiques (VGI)','s1.b4':'Disseny de sistema de monitoratge continu de visitants',
+    'svc.2.lbl':'Capacitat d\'acollida',
+    's2.title':'Avaluació de la capacitat d\'acollida i càrrega d\'ús públic',
+    's2.desc':'L\'increment del turisme de natura ha evidenciat situacions de massificació en entorns vulnerables. Aquest servei defineix llindars de referència per a la gestió, determinant el nombre màxim de visitants simultanis sense generar impactes negatius en el medi físic, econòmic o sociocultural, ni reduir la qualitat de l\'experiència de visita.',
+    's2.b1':'Metodologia de Capacitat de Càrrega Turística (Cifuentes, 1992)','s2.b2':'Avaluació de Massificació en Cims de Muntanya (EMCM) — metodologia pròpia','s2.b3':'Adaptada a escalada esportiva, espais periurbans i entorns marítim-terrestres','s2.b4':'Indicadors i recomanacions de gestió adaptativa',
+    'svc.3.lbl':'Esdeveniments esportius',
+    's3.title':'Diagnòstic socioambiental d\'esdeveniments esportius en entorns naturals',
+    's3.desc':'El nombre d\'esdeveniments esportius en espais naturals —curses de muntanya, ciclisme BTT, trail running— no ha deixat de créixer, amb una incidència directa sobre la Xarxa Natura 2000. Aquest servei ofereix una avaluació integral dels possibles impactes ambientals i socials associats a la realització d\'aquests esdeveniments, especialment crítics a la primavera durant períodes de cria, nidificació i floració.',
+    's3.b1':'Quantificació d\'impactes ambientals sobre flora, fauna i sòl','s3.b2':'Protocol de seguiment longitudinal d\'impactes','s3.b3':'Anàlisi del perfil social de participants i espectadors','s3.b4':'Recomanacions per a la mitigació i el desenvolupament sostenible de l\'esdeveniment',
+    'svc.4.lbl':'Xarxa de senders',
+    's4.title':'Avaluació de l\'estat funcional i ambiental de xarxes de senders i camins',
+    's4.desc':'L\'increment de la visita recreativa i esportiva ha intensificat la pressió sobre les xarxes de senders, generant erosió, traçats informals i pèrdua de funcionalitat. Aquest servei proporciona un diagnòstic objectiu i operatiu que permet passar de la percepció a la gestió planificada, analitzant tram a tram l\'estat real de la xarxa.',
+    's4.b1':'Metodologia adaptada de Tomczyk et al. (2023) per a l\'avaluació de condicions','s4.b2':'Georreferenciació GPS i mapes d\'estat amb SIG','s4.b3':'Identificació i priorització de punts crítics de deteriorament','s4.b4':'Pla d\'actuació: drenatge, correcció erosiva i restauració ecològica',
+    'svc.5.lbl':'Mobilitat turística',
+    's5.title':'Anàlisi de mobilitat turística en espais naturals',
+    's5.desc':'L\'augment de visitants genera congestió en rutes i accessos, amb impactes negatius sobre l\'entorn natural i la qualitat de la visita. Aquest servei analitza en detall els patrons de mobilitat turística, identificant les zones més freqüentades, els modes de transport utilitzats i la predisposició a utilitzar alternatives sostenibles, amb la finalitat de dissenyar un Pla de Mobilitat adaptat a cada espai.',
+    's5.b1':'Afluència i caracterització detallada del visitant','s5.b2':'Anàlisi de l\'oferta de transport públic existent','s5.b3':'Identificació del lloc de residència habitual dels visitants','s5.b4':'Disseny de Pla de Mobilitat cap a desplaçaments sostenibles',
+    'svc.6.lbl':'Petjada de carboni',
+    's6.title':'Càlcul i avaluació de la petjada de carboni associada a activitats i esdeveniments',
+    's6.desc':'En el context actual de crisi climàtica, entendre i gestionar la petjada de carboni associada als desplaçaments de visitants i als establiments i serveis adherits a un espai natural és crucial per assegurar la seva conservació i ús responsable. Aquest servei proporciona una eina essencial per a la gestió sostenible del territori.',
+    's6.b1':'Metodologia MITECO "Guia per al càlcul de la petjada de carboni"','s6.b2':'Càlcul d\'emissions per desplaçaments de visitants','s6.b3':'Avaluació d\'establiments i serveis adherits a l\'espai','s6.b4':'Pla de millora per a la reducció progressiva d\'emissions',
+    'svc.7.lbl':'Processos participatius',
+    's7.title':'Disseny i dinamització de processos participatius en gestió de l\'ús públic',
+    's7.desc':'La gestió de l\'ús públic en àrees naturals protegides requereix no només un enfocament tècnic, sinó també la implicació activa de la població local, els visitants i altres actors involucrats. Aquest servei facilita la participació efectiva de tots els agents en la presa de decisions, fomentant el diàleg, la col·laboració i el consens entre administracions, associacions locals i grups excursionistes.',
+    's7.b1':'Implementació de metodologies participatives contrastades','s7.b2':'Dinamització de taules de treball amb stakeholders','s7.b3':'Elaboració de plans i estratègies de gestió consensuats','s7.b4':'Enfortiment del compromís i la responsabilitat compartida',
+    /* METHODOLOGY */
+    'meth.label':'Metodologia','meth.title':'El nostre model Input–Output',
+    'meth.sub':'Un procés estructurat en tres etapes que garanteix rigor científic i resultats operatius per a la gestió.',
+    'meth.s1.t':'Entrada de dades (Input)','meth.s1.d':'Aforadors automàtics, enquestes, entrevistes, SIG i dades VGI. Recollim informació objectiva sobre afluència, distribució espacial, perfils de visitants i condicions ambientals.',
+    'meth.s2.t':'Modelització i anàlisi','meth.s2.d':'Integrem les dades en eines d\'anàlisi territorial i estadística per identificar patrons, tendències, punts crítics i escenaris d\'evolució de l\'ús públic.',
+    'meth.s3.t':'Resultats (Output)','meth.s3.d':'Indicadors clars i recomanacions operatives que faciliten una gestió adaptativa, rigorosa i orientada a la sostenibilitat de l\'espai natural.',
+    /* PROJECTS */
+    'proj.label':'Projectes','proj.title':'Mapa d\'espais naturals estudiats',
+    'proj.sub':'Fes clic als marcadors per veure el tipus d\'estudi realitzat a cada espai natural protegit.',
+    'map.leg.done':'Projecte finalitzat','map.leg.current':'Projecte en curs',
+    /* INSTAGRAM */
+    'ig.title':'Segueix-nos a @ecodata_natura','ig.cta':'Veure perfil',
+    /* CONTACT */
+    'cnt.label':'Contacte','cnt.title':'Tens un espai natural per gestionar?',
+    'cnt.desc':'Contacta amb nosaltres per sol·licitar més informació o una proposta de col·laboració. Atenem a institucions públiques, tècnics de parcs naturals, empreses del sector ambiental i investigadors.',
+    'cnt.addr':'Seu',
+    'f.name':'Nom','f.org':'Entitat / Organització','f.email':'Correu electrònic','f.svc':'Servei d\'interès','f.msg':'Missatge','f.send':'Enviar consulta',
+    'f.name.ph':'El teu nom','f.org.ph':'La teva organització','f.msg.ph':'Explica\'ns el teu espai natural i què necessites...',
+    'opt.0':'Selecciona un servei...','opt.1':'Anàlisi d\'afluència i visitants','opt.2':'Capacitat d\'acollida','opt.3':'Diagnòstic esdeveniments esportius','opt.4':'Avaluació de senders','opt.5':'Anàlisi de mobilitat','opt.6':'Petjada de carboni','opt.7':'Processos participatius','opt.8':'Altra / Consulta general',
+    /* FOOTER */
+    'foot.brand':'Recerca aplicada per a la gestió de l\'ús públic en espais naturals protegits.<br>Spin-off de l\'INEFC · Lleida, 2024.',
+    'foot.nav':'Navegació','foot.svc':'Serveis','foot.legal':'Legal','foot.linked':'Vinculats a',
+    'foot.privacy':'Política de privacitat','foot.cookies':'Política de cookies','foot.notice':'Avís legal',
+    'foot.copy':'© 2024 EcoData Natura S.L.P. Tots els drets reservats.',
+    'foot.tagline':'Dissenyat per a la gestió sostenible dels espais naturals protegits.',
+  },
+  en: {
+    /* NAV */
+    'nav.home':'Home','nav.about':'About','nav.services':'Services','nav.projects':'Projects','nav.contact':'Contact',
+    /* HERO */
+    'hero.badge':'INEFC Spin-off · Lleida · 2024',
+    'hero.title':'Caring for natural spaces<br>starts with understanding them',
+    'hero.sub':'Applied research for public use management in protected natural spaces. Precise data for sustainable decisions.',
+    'hero.cta1':'Our services','hero.cta2':'Contact us',
+    /* ABOUT */
+    'about.label':'About us','about.title':'A spin-off born from<br>30 years of applied research',
+    'about.p1':'EcoData Natura is a spin-off of the National Institute of Physical Education of Catalonia (INEFC) – Lleida Campus, founded in 2024 within the <em>INEFC Emprèn</em> programme and with the support of <em>CEEI Lleida</em>, the result of more than 30 years of applied research in the field of public use in protected natural spaces.',
+    'about.p2':'The project has its origins in the career of Dr Estela Farías Torbidoni, who, upon joining the <em>GISEAFE</em> research group, drives and consolidates the research line <em>"Sport, territory and sustainability in protected natural spaces"</em>. From this initial core, Dr Serni Morera, Dr Ricardo Nogueira and Dr Víctor Dorado joined the team, forming an interdisciplinary group with a solid scientific foundation and extensive experience in applied research.',
+    'about.quote':'We are an entity specialised in studies on public use management in protected natural spaces, whose mission is to contribute to informed decision-making through the identification, collection and systematisation of related information.',
+    'about.cta1':'Meet the team','about.cta2':'What we do',
+    /* STATS */
+    'stats.projects':'Projects completed','stats.articles':'Scientific articles','stats.thesis':'Doctoral theses','stats.years':'Years of research',
+    /* TEAM */
+    'team.label':'The team','team.title':'Multidisciplinary, rigorous and passionate about nature',
+    'team.sub':'We combine academic knowledge, professional experience and passion for nature to provide solutions for public use management in natural spaces.',
+    /* SERVICES */
+    'svc.label':'What we do','svc.title':'A model based on<br>scientific evidence',
+    'svc.sub':'We develop evaluation, monitoring and decision-support methodologies for public use management in protected natural spaces.',
+    'svc.1.lbl':'Visitor flows',
+    's1.title':'Analysis of visitor flows, use distribution and visitor profiling',
+    's1.desc':'Protected Natural Spaces require rigorous public use management to guarantee both their conservation and responsible enjoyment. This service determines visitor numbers, spatio-temporal distribution and visitor profile characterisation, developing a bespoke visitor monitoring system.',
+    's1.b1':'OVMS methodology (Farías-Torbidoni et al., 2022)','s1.b2':'In-situ automatic counters and face-to-face surveys','s1.b3':'GIS analysis and volunteered geographic data (VGI)','s1.b4':'Design of continuous visitor monitoring system',
+    'svc.2.lbl':'Carrying capacity',
+    's2.title':'Assessment of carrying capacity and public use load',
+    's2.desc':'The growth of nature tourism has highlighted overcrowding situations in vulnerable environments. This service defines management reference thresholds, determining the maximum number of simultaneous visitors without generating negative impacts on the physical, economic or sociocultural environment, or reducing the quality of the visitor experience.',
+    's2.b1':'Tourist Carrying Capacity methodology (Cifuentes, 1992)','s2.b2':'Mountain Summit Overcrowding Assessment (EMCM) — own methodology','s2.b3':'Adapted to sport climbing, peri-urban spaces and maritime-terrestrial environments','s2.b4':'Indicators and recommendations for adaptive management',
+    'svc.3.lbl':'Sports events',
+    's3.title':'Socio-environmental assessment of sports events in natural environments',
+    's3.desc':'The number of sports events in natural spaces — mountain races, MTB cycling, trail running — has continued to grow, with a direct impact on the Natura 2000 Network. This service provides a comprehensive assessment of the potential environmental and social impacts associated with these events, which are especially critical in spring during breeding, nesting and flowering periods.',
+    's3.b1':'Quantification of environmental impacts on flora, fauna and soil','s3.b2':'Longitudinal impact monitoring protocol','s3.b3':'Social profile analysis of participants and spectators','s3.b4':'Recommendations for event mitigation and sustainable development',
+    'svc.4.lbl':'Trail network',
+    's4.title':'Assessment of the functional and environmental condition of trail and path networks',
+    's4.desc':'The growth of recreational and sports visits has intensified pressure on trail networks, generating erosion, informal routes and loss of functionality. This service provides an objective and operational diagnosis that allows moving from perception to planned management, analysing the actual condition of the network segment by segment.',
+    's4.b1':'Methodology adapted from Tomczyk et al. (2023) for condition assessment','s4.b2':'GPS georeferencing and condition maps with GIS','s4.b3':'Identification and prioritisation of critical deterioration points','s4.b4':'Action plan: drainage, erosion correction and ecological restoration',
+    'svc.5.lbl':'Tourist mobility',
+    's5.title':'Analysis of tourist mobility in natural spaces',
+    's5.desc':'The growth in visitors generates congestion on routes and access points, with negative impacts on the natural environment and visitor experience quality. This service analyses in detail tourist mobility patterns, identifying the most frequented areas, transport modes used and the willingness to use sustainable alternatives, in order to design a Mobility Plan adapted to each space.',
+    's5.b1':'Visitor flow and detailed visitor profiling','s5.b2':'Analysis of the existing public transport supply','s5.b3':'Identification of visitors\' usual place of residence','s5.b4':'Design of a Mobility Plan towards sustainable travel',
+    'svc.6.lbl':'Carbon footprint',
+    's6.title':'Calculation and assessment of the carbon footprint associated with activities and events',
+    's6.desc':'In the current context of climate crisis, understanding and managing the carbon footprint associated with visitor travel and the establishments and services affiliated with a natural space is crucial to ensure its conservation and responsible use. This service provides an essential tool for sustainable territorial management.',
+    's6.b1':'MITECO methodology "Guide for carbon footprint calculation"','s6.b2':'Calculation of emissions from visitor travel','s6.b3':'Assessment of establishments and services affiliated with the space','s6.b4':'Improvement plan for progressive emission reduction',
+    'svc.7.lbl':'Participatory processes',
+    's7.title':'Design and facilitation of participatory processes in public use management',
+    's7.desc':'Public use management in protected natural areas requires not only a technical approach, but also the active involvement of local communities, visitors and other stakeholders. This service facilitates the effective participation of all parties in decision-making, fostering dialogue, collaboration and consensus between administrations, local associations and hiking groups.',
+    's7.b1':'Implementation of proven participatory methodologies','s7.b2':'Facilitation of stakeholder working groups','s7.b3':'Development of consensual management plans and strategies','s7.b4':'Strengthening commitment and shared responsibility',
+    /* METHODOLOGY */
+    'meth.label':'Methodology','meth.title':'Our Input–Output model',
+    'meth.sub':'A three-stage process that guarantees scientific rigour and operational results for management.',
+    'meth.s1.t':'Data input (Input)','meth.s1.d':'Automatic counters, surveys, interviews, GIS and VGI data. We collect objective information on visitor flows, spatial distribution, visitor profiles and environmental conditions.',
+    'meth.s2.t':'Modelling and analysis','meth.s2.d':'We integrate data into territorial and statistical analysis tools to identify patterns, trends, critical points and public use evolution scenarios.',
+    'meth.s3.t':'Results (Output)','meth.s3.d':'Clear indicators and operational recommendations that facilitate adaptive, rigorous management oriented towards the sustainability of the natural space.',
+    /* PROJECTS */
+    'proj.label':'Projects','proj.title':'Map of natural spaces studied',
+    'proj.sub':'Click on the markers to see the type of study carried out in each protected natural area.',
+    'map.leg.done':'Completed project','map.leg.current':'Ongoing project',
+    /* INSTAGRAM */
+    'ig.title':'Follow us @ecodata_natura','ig.cta':'View profile',
+    /* CONTACT */
+    'cnt.label':'Contact','cnt.title':'Do you have a natural space to manage?',
+    'cnt.desc':'Contact us to request more information or a collaboration proposal. We work with public institutions, natural park managers, environmental sector companies and researchers.',
+    'cnt.addr':'Address',
+    'f.name':'Name','f.org':'Entity / Organisation','f.email':'Email','f.svc':'Service of interest','f.msg':'Message','f.send':'Send enquiry',
+    'f.name.ph':'Your name','f.org.ph':'Your organisation','f.msg.ph':'Tell us about your natural space and what you need...',
+    'opt.0':'Select a service...','opt.1':'Visitor flow analysis','opt.2':'Carrying capacity','opt.3':'Sports event assessment','opt.4':'Trail assessment','opt.5':'Mobility analysis','opt.6':'Carbon footprint','opt.7':'Participatory processes','opt.8':'Other / General enquiry',
+    /* FOOTER */
+    'foot.brand':'Applied research for public use management in protected natural spaces.<br>INEFC Spin-off · Lleida, 2024.',
+    'foot.nav':'Navigation','foot.svc':'Services','foot.legal':'Legal','foot.linked':'Affiliated with',
+    'foot.privacy':'Privacy policy','foot.cookies':'Cookie policy','foot.notice':'Legal notice',
+    'foot.copy':'© 2024 EcoData Natura S.L.P. All rights reserved.',
+    'foot.tagline':'Designed for the sustainable management of protected natural spaces.',
+  }
+};
+
+function setLang(l) {
+  document.documentElement.lang = l;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent === l.toUpperCase()));
+  document.querySelectorAll('[data-i18n]').forEach(el => { const v = T[l]?.[el.dataset.i18n]; if (v) el.innerHTML = v; });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => { const v = T[l]?.[el.dataset.i18nPh]; if (v) el.placeholder = v; });
+}
+</script>
+</body>
+</html>
