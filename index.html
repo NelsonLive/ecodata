@@ -240,20 +240,8 @@
     .gal-item:hover img { transform: scale(1.06); }
 
     /* ── INSTAGRAM ───────────────────────────────── */
-    #instagram { background: var(--g-dark); padding: 4rem 0; overflow: hidden; }
+    #instagram { background: var(--g-dark); padding: 4rem 0; }
     .ig-head { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem; }
-    .ig-marquee { position: relative; }
-    .ig-marquee::before, .ig-marquee::after { content: ''; position: absolute; top: 0; bottom: 0; width: 100px; z-index: 2; pointer-events: none; }
-    .ig-marquee::before { left: 0; background: linear-gradient(to right, var(--g-dark), transparent); }
-    .ig-marquee::after { right: 0; background: linear-gradient(to left, var(--g-dark), transparent); }
-    .ig-track { display: flex; gap: .75rem; padding: 0 .375rem; animation: ig-scroll 35s linear infinite; width: max-content; }
-    .ig-track:hover { animation-play-state: paused; }
-    @keyframes ig-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-    .ig-cell { flex: 0 0 240px; height: 240px; border-radius: 10px; overflow: hidden; position: relative; cursor: pointer; }
-    .ig-cell img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
-    .ig-cell:hover img { transform: scale(1.08); }
-    .ig-over { position: absolute; inset: 0; background: rgba(26,42,14,.5); opacity: 0; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.2rem; transition: opacity .3s; }
-    .ig-cell:hover .ig-over { opacity: 1; }
 
     /* ── CONTACT ─────────────────────────────────── */
     #contacto { background: var(--dark); padding: 5rem 0; }
@@ -861,9 +849,10 @@
   <div class="container">
     <div class="gallery-grid">
       <div class="gal-item"><img src="Fotos-seleccionadas/Equipo/Carrera Puigverd equip.webp" alt="Equipo EcoData – Carrera Puigverd"></div>
-      <div class="gal-item"><img src="Fotos-seleccionadas/Equipo/ESPARC_2022 foto grupo.webp" alt="Equipo EcoData en ESPARC 2022"></div>
+      <div class="gal-item"><img src="Fotos-seleccionadas/Equipo/Trabajo de campo Delta.webp" alt="Trabajo de campo – Delta de l'Ebre"></div>
       <div class="gal-item"><img src="Fotos-seleccionadas/Equipo/ESPARC 2024.webp" alt="Equipo EcoData en ESPARC 2024"></div>
       <div class="gal-item"><img src="Fotos-seleccionadas/Equipo/Fotos MMV8 (4).webp" alt="Equipo EcoData"></div>
+      <div class="gal-item"><img src="Fotos-seleccionadas/Equipo/Seguimiento campo.webp" alt="Seguimiento de campo EcoData"></div>
     </div>
   </div>
 </div>
@@ -880,76 +869,13 @@
         <i class="fab fa-instagram"></i><span data-i18n="ig.cta">Ver perfil</span>
       </a>
     </div>
+    <!-- Feed real de Instagram via Behold.so (gratis) -->
+    <!-- PASO: ve a https://behold.so · conecta @ecodata_natura · copia el ID del widget y reemplaza WIDGET_ID_AQUI -->
+    <div id="behold-widget-WIDGET_ID_AQUI"></div>
   </div>
-  <div class="ig-marquee">
-    <div class="ig-track">
-      <a href="https://www.instagram.com/ecodata_natura" target="_blank" class="ig-cell">
-        <img src="Fotos-seleccionadas/1. Pasarla.webp" alt="EcoData Instagram">
-        <div class="ig-over"><i class="fab fa-instagram"></i></div>
-      </a>
-      <a href="https://www.instagram.com/ecodata_natura" target="_blank" class="ig-cell">
-        <img src="Fotos-seleccionadas/Equipo/Fotos MMV8 (4).webp" alt="EcoData Instagram">
-        <div class="ig-over"><i class="fab fa-instagram"></i></div>
-      </a>
-      <a href="https://www.instagram.com/ecodata_natura" target="_blank" class="ig-cell">
-        <img src="Fotos-seleccionadas/Trabajos de campo/Formació TC CAP DE CREUS.webp" alt="EcoData Instagram">
-        <div class="ig-over"><i class="fab fa-instagram"></i></div>
-      </a>
-      <a href="https://www.instagram.com/ecodata_natura" target="_blank" class="ig-cell">
-        <img src="Fotos-seleccionadas/Paisajes/Paisaje Montsant.webp" alt="EcoData Instagram">
-        <div class="ig-over"><i class="fab fa-instagram"></i></div>
-      </a>
-      <a href="https://www.instagram.com/ecodata_natura" target="_blank" class="ig-cell">
-        <img src="Fotos-seleccionadas/Instrumentos/Impacto sociambiental eventos.webp" alt="EcoData Instagram">
-        <div class="ig-over"><i class="fab fa-instagram"></i></div>
-      </a>
-      <a href="https://www.instagram.com/ecodata_natura" target="_blank" class="ig-cell">
-        <img src="Fotos-seleccionadas/Uso publico/Cim Pedraforca 2.webp" alt="EcoData Instagram">
-        <div class="ig-over"><i class="fab fa-instagram"></i></div>
-      </a>
-      <a href="https://www.instagram.com/ecodata_natura" target="_blank" class="ig-cell">
-        <img src="Fotos-seleccionadas/Equipo/Carrera Puigverd equip.webp" alt="EcoData Instagram">
-        <div class="ig-over"><i class="fab fa-instagram"></i></div>
-      </a>
-      <a href="https://www.instagram.com/ecodata_natura" target="_blank" class="ig-cell">
-        <img src="Fotos-seleccionadas/Proceso participativo Montsant.webp" alt="EcoData Instagram">
-        <div class="ig-over"><i class="fab fa-instagram"></i></div>
-      </a>
-      <!-- Duplicate set for seamless loop -->
-      <a href="https://www.instagram.com/ecodata_natura" target="_blank" class="ig-cell" aria-hidden="true">
-        <img src="Fotos-seleccionadas/1. Pasarla.webp" alt="">
-        <div class="ig-over"><i class="fab fa-instagram"></i></div>
-      </a>
-      <a href="https://www.instagram.com/ecodata_natura" target="_blank" class="ig-cell" aria-hidden="true">
-        <img src="Fotos-seleccionadas/Equipo/Fotos MMV8 (4).webp" alt="">
-        <div class="ig-over"><i class="fab fa-instagram"></i></div>
-      </a>
-      <a href="https://www.instagram.com/ecodata_natura" target="_blank" class="ig-cell" aria-hidden="true">
-        <img src="Fotos-seleccionadas/Trabajos de campo/Formació TC CAP DE CREUS.webp" alt="">
-        <div class="ig-over"><i class="fab fa-instagram"></i></div>
-      </a>
-      <a href="https://www.instagram.com/ecodata_natura" target="_blank" class="ig-cell" aria-hidden="true">
-        <img src="Fotos-seleccionadas/Paisajes/Paisaje Montsant.webp" alt="">
-        <div class="ig-over"><i class="fab fa-instagram"></i></div>
-      </a>
-      <a href="https://www.instagram.com/ecodata_natura" target="_blank" class="ig-cell" aria-hidden="true">
-        <img src="Fotos-seleccionadas/Instrumentos/Impacto sociambiental eventos.webp" alt="">
-        <div class="ig-over"><i class="fab fa-instagram"></i></div>
-      </a>
-      <a href="https://www.instagram.com/ecodata_natura" target="_blank" class="ig-cell" aria-hidden="true">
-        <img src="Fotos-seleccionadas/Uso publico/Cim Pedraforca 2.webp" alt="">
-        <div class="ig-over"><i class="fab fa-instagram"></i></div>
-      </a>
-      <a href="https://www.instagram.com/ecodata_natura" target="_blank" class="ig-cell" aria-hidden="true">
-        <img src="Fotos-seleccionadas/Equipo/Carrera Puigverd equip.webp" alt="">
-        <div class="ig-over"><i class="fab fa-instagram"></i></div>
-      </a>
-      <a href="https://www.instagram.com/ecodata_natura" target="_blank" class="ig-cell" aria-hidden="true">
-        <img src="Fotos-seleccionadas/Proceso participativo Montsant.webp" alt="">
-        <div class="ig-over"><i class="fab fa-instagram"></i></div>
-      </a>
-    </div>
-  </div>
+  <script>
+    (function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://w.behold.so/widget.js";fjs.parentNode.insertBefore(js,fjs);}(document,"script","behold-js"));
+  </script>
 </section>
 
 <!-- ══ CONTACT ══════════════════════════════════════ -->
