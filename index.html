@@ -15,7 +15,7 @@
   <meta property="og:url" content="https://www.ecodatanatura.com/">
   <meta property="og:title" content="EcoData Natura S.L.P. — Investigación aplicada en espacios naturales">
   <meta property="og:description" content="Spin-off del INEFC especializada en gestión del uso público en espacios naturales protegidos. Datos precisos para decisiones sostenibles.">
-  <meta property="og:image" content="https://www.ecodatanatura.com/logo/Logo V blanco.png">
+  <meta property="og:image" content="https://www.ecodatanatura.com/logo/Petjada amb cercle.webp">
   <meta property="og:locale" content="es_ES">
   <meta property="og:locale:alternate" content="ca_ES">
   <meta property="og:locale:alternate" content="en_GB">
@@ -24,11 +24,11 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="EcoData Natura S.L.P. — Investigación aplicada en espacios naturales">
   <meta name="twitter:description" content="Spin-off del INEFC especializada en gestión del uso público en espacios naturales protegidos.">
-  <meta name="twitter:image" content="https://www.ecodatanatura.com/logo/Logo V blanco.png">
+  <meta name="twitter:image" content="https://www.ecodatanatura.com/logo/Petjada amb cercle.webp">
 
   <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%232C4A1E'/><text y='24' x='4' font-size='21'>🌿</text></svg>">
-  <link rel="apple-touch-icon" href="logo/Logo V blanco.png">
+  <link rel="apple-touch-icon" href="logo/Petjada amb cercle.webp">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -98,7 +98,7 @@
     .mob-nav.open { display: flex; }
     .mob-nav a { font-family: 'Jost', sans-serif; font-size: 1.6rem; font-weight: 700; color: #fff; text-decoration: none; }
     .mob-close { position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer; }
-    .mob-lang { display: flex; gap: .75rem; margin-top: .5rem; }
+    .mob-lang { display: flex; gap: .75rem; margin-bottom: 1.5rem; }
 
     /* ── HERO ────────────────────────────────────── */
     #inicio { position: relative; height: 100vh; min-height: 580px; overflow: hidden; }
@@ -240,13 +240,19 @@
     .gal-item:hover img { transform: scale(1.06); }
 
     /* ── INSTAGRAM ───────────────────────────────── */
-    #instagram { background: var(--g-dark); padding: 4rem 0; }
+    #instagram { background: var(--g-dark); padding: 4rem 0; overflow: hidden; }
     .ig-head { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem; }
-    .ig-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: .5rem; }
-    .ig-cell { aspect-ratio: 1; border-radius: 8px; overflow: hidden; position: relative; cursor: pointer; }
-    .ig-cell img { width: 100%; height: 100%; object-fit: cover; transition: var(--tr); }
+    .ig-marquee { position: relative; }
+    .ig-marquee::before, .ig-marquee::after { content: ''; position: absolute; top: 0; bottom: 0; width: 100px; z-index: 2; pointer-events: none; }
+    .ig-marquee::before { left: 0; background: linear-gradient(to right, var(--g-dark), transparent); }
+    .ig-marquee::after { right: 0; background: linear-gradient(to left, var(--g-dark), transparent); }
+    .ig-track { display: flex; gap: .75rem; padding: 0 .375rem; animation: ig-scroll 35s linear infinite; width: max-content; }
+    .ig-track:hover { animation-play-state: paused; }
+    @keyframes ig-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .ig-cell { flex: 0 0 240px; height: 240px; border-radius: 10px; overflow: hidden; position: relative; cursor: pointer; }
+    .ig-cell img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
     .ig-cell:hover img { transform: scale(1.08); }
-    .ig-over { position: absolute; inset: 0; background: rgba(26,42,14,.5); opacity: 0; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.2rem; transition: var(--tr); }
+    .ig-over { position: absolute; inset: 0; background: rgba(26,42,14,.5); opacity: 0; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.2rem; transition: opacity .3s; }
     .ig-cell:hover .ig-over { opacity: 1; }
 
     /* ── CONTACT ─────────────────────────────────── */
@@ -300,7 +306,6 @@
       .gal-item:first-child { grid-column: span 2; grid-row: span 1; }
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
       .form-row { grid-template-columns: 1fr; }
-      .ig-grid { grid-template-columns: repeat(3,1fr); }
       .svc-row { grid-template-columns: 1fr; min-height: auto; }
       .svc-row.reverse { direction: ltr; }
       .svc-img { height: 280px; }
@@ -309,7 +314,6 @@
     @media(max-width:580px) {
       .stats-grid { grid-template-columns: repeat(2,1fr); }
       .footer-grid { grid-template-columns: 1fr; }
-      .ig-grid { grid-template-columns: repeat(2,1fr); }
       .hero-btns { flex-direction: column; align-items: center; }
       .about-img-sm { display: none; }
     }
@@ -322,7 +326,7 @@
     "@type": "Organization",
     "name": "EcoData Natura S.L.P.",
     "url": "https://www.ecodatanatura.com",
-    "logo": "https://www.ecodatanatura.com/logo/Logo V blanco.png",
+    "logo": "https://www.ecodatanatura.com/logo/Petjada amb cercle.webp",
     "description": "Spin-off del INEFC especializada en investigación aplicada sobre gestión del uso público en espacios naturales protegidos.",
     "foundingDate": "2024",
     "address": {
@@ -349,22 +353,22 @@
 <!-- MOBILE NAV -->
 <div class="mob-nav" id="mobNav">
   <button class="mob-close" onclick="toggleNav()">✕</button>
-  <a href="#inicio"     onclick="toggleNav()" data-i18n="nav.home">Inicio</a>
-  <a href="#nosotros"   onclick="toggleNav()" data-i18n="nav.about">Nosotros</a>
-  <a href="#servicios"  onclick="toggleNav()" data-i18n="nav.services">Servicios</a>
-  <a href="#proyectos"  onclick="toggleNav()" data-i18n="nav.projects">Proyectos</a>
-  <a href="#contacto"   onclick="toggleNav()" data-i18n="nav.contact">Contacto</a>
   <div class="mob-lang">
     <button class="lang-btn active" onclick="setLang('es')">ES</button>
     <button class="lang-btn"        onclick="setLang('ca')">CA</button>
     <button class="lang-btn"        onclick="setLang('en')">EN</button>
   </div>
+  <a href="#inicio"     onclick="toggleNav()" data-i18n="nav.home">Inicio</a>
+  <a href="#nosotros"   onclick="toggleNav()" data-i18n="nav.about">Nosotros</a>
+  <a href="#servicios"  onclick="toggleNav()" data-i18n="nav.services">Servicios</a>
+  <a href="#proyectos"  onclick="toggleNav()" data-i18n="nav.projects">Proyectos</a>
+  <a href="#contacto"   onclick="toggleNav()" data-i18n="nav.contact">Contacto</a>
 </div>
 
 <!-- NAVBAR -->
 <nav id="navbar">
   <a href="#inicio" class="nav-logo">
-    <img src="logo/Logo V blanco.png" alt="EcoData Natura" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <img src="logo/Petjada amb cercle.webp" alt="EcoData Natura" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
     <div style="display:none;align-items:center;gap:.5rem;">
       <div style="width:42px;height:42px;border-radius:10px;background:linear-gradient(135deg,#5A8A3D,#3D6B2B);display:flex;align-items:center;justify-content:center;font-size:1.3rem;">🌿</div>
       <div style="display:flex;flex-direction:column;"><b style="font-family:'Jost',sans-serif;font-weight:700;font-size:1rem;color:#fff;">EcoData Natura</b><small style="font-size:.6rem;color:#DCE4B8;letter-spacing:.1em;text-transform:uppercase;">S.L.P.</small></div>
@@ -434,7 +438,6 @@
       </div>
       <div class="about-visual fade-up">
         <img src="Fotos-seleccionadas/Paisajes/1. Paisaje Cadi.webp" alt="Paisaje natural Cadí – EcoData Natura" class="about-img">
-        <img src="Fotos-seleccionadas/Espai CEEI.webp" alt="Sede EcoData Natura – Espai CEEI Lleida" class="about-img-sm">
       </div>
     </div>
   </div>
@@ -478,9 +481,8 @@
         <div class="team-info">
           <div class="team-name">Dra. Estela I. Farías Torbidoni</div>
           <div class="team-role">Directora científica</div>
-          <div class="team-bio">PhD en CAFD, MSc Espacios Naturales Protegidos, MBA. Profesora Titular INEFC – Universitat de Lleida.</div>
+          <div class="team-bio">Licenciada en Ciencias de la Actividad Física y el Deporte (INEFC Lleida - UdL). PhD en Actividad Física y Deporte, MSc Espacios Naturales Protegidos, MSc Administración de Empresas. Profesora Titular INEFC – Universitat de Lleida.</div>
           <div class="team-links">
-            <a href="https://www.researchgate.net/profile/Estela-Farias-Torbidoni" target="_blank" class="tl tl-rg" title="ResearchGate"><i class="fas fa-graduation-cap"></i></a>
             <a href="https://orcid.org/0000-0002-7541-8140" target="_blank" class="tl tl-oc" title="ORCID"><i class="fab fa-orcid"></i></a>
             <a href="https://scholar.google.com/citations?user=2KmSiSkAAAAJ&hl=es" target="_blank" class="tl tl-gs" title="Google Scholar"><i class="fab fa-google"></i></a>
             <a href="https://www.linkedin.com/in/estela-in%C3%A9s-far%C3%ADas-torbidoni-a44b9a11/" target="_blank" class="tl tl-li" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
@@ -492,9 +494,8 @@
         <div class="team-info">
           <div class="team-name">Dr. Víctor Dorado Martínez</div>
           <div class="team-role">Director ejecutivo</div>
-          <div class="team-bio">PhD en CAFD, MSc Espacios Naturales Protegidos, MSc Gestión Deportiva. Especialista en capacidad de acogida de visitantes.</div>
+          <div class="team-bio">Graduado en Ciencias de la Actividad Física y el Deporte (INEFC Lleida - UdL). PhD en Actividad Física y Deporte, MSc Gestión Deportiva.</div>
           <div class="team-links">
-            <a href="https://www.researchgate.net/profile/Victor-Dorado" target="_blank" class="tl tl-rg" title="ResearchGate"><i class="fas fa-graduation-cap"></i></a>
             <a href="https://orcid.org/0000-0002-7253-8083" target="_blank" class="tl tl-oc" title="ORCID"><i class="fab fa-orcid"></i></a>
             <a href="https://scholar.google.es/citations?user=onBNSnAAAAAJ&hl=es" target="_blank" class="tl tl-gs" title="Google Scholar"><i class="fab fa-google"></i></a>
             <a href="https://www.linkedin.com/in/vicdorado/" target="_blank" class="tl tl-li" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
@@ -506,9 +507,8 @@
         <div class="team-info">
           <div class="team-name">Dr. Serni Morera Carbonell</div>
           <div class="team-role">Investigador senior</div>
-          <div class="team-bio">PhD en ciencia y tecnología del agua por la Universitat de Girona. Consultor ambiental especializado en análisis de ciclo de vida, verificador oficial de Declaraciones Ambientales de Producto por DAPCons y profesor asociado de Ingeniería Ambiental en la Universitat de Lleida.</div>
+          <div class="team-bio">Licenciado en Ciencias Ambientales (Universitat de Girona). PhD en Ciencia y Tecnología del Agua por la Universitat de Girona. Profesor asociado de Ingeniería Ambiental en la Universitat de Lleida. Especialista en análisis de ciclo de vida.</div>
           <div class="team-links">
-            <a href="https://www.researchgate.net/profile/Serni-Morera" target="_blank" class="tl tl-rg" title="ResearchGate"><i class="fas fa-graduation-cap"></i></a>
             <a href="https://orcid.org/0000-0002-5340-555X" target="_blank" class="tl tl-oc" title="ORCID"><i class="fab fa-orcid"></i></a>
             <a href="https://scholar.google.com/citations?user=1llVhbYAAAAJ&hl=ca" target="_blank" class="tl tl-gs" title="Google Scholar"><i class="fab fa-google"></i></a>
             <a href="https://www.linkedin.com/in/serni-morera-carbonell-64b97797/" target="_blank" class="tl tl-li" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
@@ -520,9 +520,8 @@
         <div class="team-info">
           <div class="team-name">Dr. Ricardo M. Nogueira Mendes</div>
           <div class="team-role">Investigador senior</div>
-          <div class="team-bio">PhD especialista en análisis de datos y sistemas de información geográfica aplicados a espacios naturales.</div>
+          <div class="team-bio">Licenciado en Biología (Universidade de Lisboa). PhD en Actividad Física y Deporte. Técnico Superior en ICNF. Investigador colaborador NOVAFCSH, Universidade Nova de Lisboa, Portugal. Especialista en análisis de datos y sistemas de información geográfica aplicados a espacios naturales.</div>
           <div class="team-links">
-            <a href="https://www.researchgate.net/profile/Ricardo-M-Nogueira-Mendes-2" target="_blank" class="tl tl-rg" title="ResearchGate"><i class="fas fa-graduation-cap"></i></a>
             <a href="https://orcid.org/0000-0002-3284-7148" target="_blank" class="tl tl-oc" title="ORCID"><i class="fab fa-orcid"></i></a>
             <a href="https://scholar.google.com/citations?user=FFStI9UAAAAJ&hl=en" target="_blank" class="tl tl-gs" title="Google Scholar"><i class="fab fa-google"></i></a>
             <a href="https://www.linkedin.com/in/ricardo-m-nogueira-mendes-89a264a8/" target="_blank" class="tl tl-li" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
@@ -534,27 +533,11 @@
         <div class="team-info">
           <div class="team-name">Dra. Vanessa Teles da Mota</div>
           <div class="team-role">Investigadora senior</div>
-          <div class="team-bio">PhD con experiencia en gestión de espacios naturales y análisis del comportamiento de visitantes.</div>
+          <div class="team-bio">Licenciada en Biología (Universidad de Lisboa). PhD en Gestión Medioambiental. Investigadora postdoctoral en el Instituto Nacional de Educación Física de Lleida (INEFC Lleida). Especialista en análisis y tratamiento de datos secundarios.</div>
           <div class="team-links">
-            <a href="https://www.researchgate.net/profile/Vanessa-Teles-Da-Mota-2" target="_blank" class="tl tl-rg" title="ResearchGate"><i class="fas fa-graduation-cap"></i></a>
             <a href="https://orcid.org/0000-0003-4841-3632" target="_blank" class="tl tl-oc" title="ORCID"><i class="fab fa-orcid"></i></a>
             <a href="https://scholar.google.com/citations?user=84gzLdkAAAAJ&hl=en" target="_blank" class="tl tl-gs" title="Google Scholar"><i class="fab fa-google"></i></a>
             <a href="https://www.linkedin.com/in/vanessa-teles-da-mota-730aba116/" target="_blank" class="tl tl-li" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-          </div>
-        </div>
-      </div>
-      <div class="team-card fade-up">
-        <img src="Fotos_Equip/Marcos Vinícius.webp" alt="Marcos Vinícius Ribeiro de Castro Simão" class="team-photo">
-        <div class="team-info">
-          <div class="team-name">Marcos V. Ribeiro de Castro Simão</div>
-          <div class="team-role">Investigador senior</div>
-          <div class="team-bio">Profesor de Ingeniería Forestal (IFAM, Brasil). Máster en Ciencias de Bosques Tropicales (INPA). Doctorando en la Universitat de Lleida.</div>
-          <div class="team-links">
-            <a href="https://www.researchgate.net/profile/Marcos-Vinicius-Simao" target="_blank" class="tl tl-rg" title="ResearchGate"><i class="fas fa-graduation-cap"></i></a>
-            <a href="https://orcid.org/0000-0002-8738-6350" target="_blank" class="tl tl-oc" title="ORCID"><i class="fab fa-orcid"></i></a>
-            <a href="https://scholar.google.es/citations?user=hodxVO4AAAAJ&hl=es&oi=ao" target="_blank" class="tl tl-gs" title="Google Scholar"><i class="fab fa-google"></i></a>
-            <a href="https://www.scopus.com/authid/detail.uri?authorId=59682707900" target="_blank" class="tl tl-sc" title="Scopus"></a>
-            <a href="http://lattes.cnpq.br/0371932049521169" target="_blank" class="tl tl-lt" title="Curriculum Lattes"></a>
           </div>
         </div>
       </div>
@@ -563,11 +546,10 @@
         <div class="team-info">
           <div class="team-name">Dr. Carlos Pereira da Silva</div>
           <div class="team-role">Investigador senior</div>
-          <div class="team-bio">PhD en Geografía. Profesor Associado NOVAFCSH, Universidade Nova de Lisboa, Portugal.</div>
+          <div class="team-bio">Licenciado en Geografía y planeamiento regional (Universidade Nova de Lisboa). Profesor Associado NOVAFCSH, Universidade Nova de Lisboa, Portugal. Especialista en gestión integrada de zonas costeras.</div>
           <div class="team-links">
-            <a href="https://www.researchgate.net/profile/Carlos_Silva59" target="_blank" class="tl tl-rg" title="ResearchGate"><i class="fas fa-graduation-cap"></i></a>
             <a href="https://orcid.org/0000-0003-1613-4321" target="_blank" class="tl tl-oc" title="ORCID"><i class="fab fa-orcid"></i></a>
-            <a href="https://scholar.google.pt/citations?user=4DaobpAAAAAJ&hl=en" target="_blank" class="tl tl-gs" title="Google Scholar"><i class="fab fa-google"></i></a>
+            <a href="https://scholar.google.pt/citations?user=7BvdpHAAAAAJ&hl=en&authuser=1" target="_blank" class="tl tl-gs" title="Google Scholar"><i class="fab fa-google"></i></a>
             <a href="https://www.linkedin.com/in/carlos-pereira-da-silva-32497470/" target="_blank" class="tl tl-li" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
           </div>
         </div>
@@ -576,10 +558,9 @@
         <img src="Fotos_Equip/Maria_Ulloa-removebg-preview.webp" alt="Dra. Maira Ulloa Hernández" class="team-photo">
         <div class="team-info">
           <div class="team-name">Dra. Maira Ulloa Hernández</div>
-          <div class="team-role">Investigadora</div>
-          <div class="team-bio">PhD en CAFD, MSc Gestión Deportiva. Docente en Euncet Business School (UPC) y Universidad Alfonso X el Sabio.</div>
+          <div class="team-role">Investigadora colaboradora</div>
+          <div class="team-bio">Graduada en Ciencias de la Actividad Física y el Deporte (Universidad Mayor, Chile). PhD en Actividad Física y Deporte, MSc Gestión Deportiva. Profesora asociada Euncet Business School (UPC) y Universidad Alfonso X el Sabio. Especialista en sostenibilidad de eventos deportivos.</div>
           <div class="team-links">
-            <a href="https://www.researchgate.net/profile/Maira-Ulloa-Hernandez" target="_blank" class="tl tl-rg" title="ResearchGate"><i class="fas fa-graduation-cap"></i></a>
             <a href="https://orcid.org/0000-0002-4865-1676" target="_blank" class="tl tl-oc" title="ORCID"><i class="fab fa-orcid"></i></a>
             <a href="https://scholar.google.es/citations?user=S6pz3fIAAA&hl=es" target="_blank" class="tl tl-gs" title="Google Scholar"><i class="fab fa-google"></i></a>
             <a href="https://www.linkedin.com/in/maira-ulloa-hern%C3%A1ndez" target="_blank" class="tl tl-li" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
@@ -587,13 +568,26 @@
         </div>
       </div>
       <div class="team-card fade-up">
+        <img src="Fotos_Equip/Marcos Vinícius.webp" alt="Marcos Vinícius Ribeiro de Castro Simão" class="team-photo">
+        <div class="team-info">
+          <div class="team-name">Marcos V. Ribeiro de Castro Simão</div>
+          <div class="team-role">Investigador colaborador</div>
+          <div class="team-bio">Graduado en Ingeniería Forestal (Universidade Federal de Viçosa - UFV Brasil). Profesor de Ingeniería Forestal (IFAM, Brasil). Máster en Ciencias de Bosques Tropicales (INPA). Doctorando en Actividad Física y Deporte. Especialista en impactos ambientales del uso recreativo de los espacios naturales protegidos.</div>
+          <div class="team-links">
+            <a href="https://orcid.org/0000-0002-8738-6350" target="_blank" class="tl tl-oc" title="ORCID"><i class="fab fa-orcid"></i></a>
+            <a href="https://scholar.google.es/citations?user=hodxVO4AAAAJ&hl=es&oi=ao" target="_blank" class="tl tl-gs" title="Google Scholar"><i class="fab fa-google"></i></a>
+            <a href="https://www.scopus.com/authid/detail.uri?authorId=59682707900" target="_blank" class="tl tl-sc" title="Scopus"></a>
+            <a href="http://lattes.cnpq.br/0371932049521169" target="_blank" class="tl tl-lt" title="Curriculum Lattes"></a>
+          </div>
+        </div>
+      </div>
+      <div class="team-card fade-up">
         <img src="Fotos_Equip/Fotografia_Sara-removebg-preview.webp" alt="Sara Hamza Mayora" class="team-photo">
         <div class="team-info">
           <div class="team-name">Sara Hamza Mayora</div>
-          <div class="team-role">Investigadora predoctoral</div>
-          <div class="team-bio">Doctoranda en CAFD, MSc Gestión Deportiva y MSc Formación del Profesorado (INEFC – UdL).</div>
+          <div class="team-role">Investigadora colaboradora</div>
+          <div class="team-bio">Graduada en Ciencias de la Actividad Física y el Deporte (INEFC Lleida - UdL). Doctoranda en Actividad Física y Deporte, MSc Gestión Deportiva y MSc Formación del Profesorado. Especialista en el uso de las nuevas tecnologías en espacios naturales protegidos.</div>
           <div class="team-links">
-            <a href="https://www.researchgate.net/profile/Sara-Hamza-Mayora-2" target="_blank" class="tl tl-rg" title="ResearchGate"><i class="fas fa-graduation-cap"></i></a>
             <a href="https://orcid.org/0000-0002-8405-2769" target="_blank" class="tl tl-oc" title="ORCID"><i class="fab fa-orcid"></i></a>
             <a href="https://scholar.google.com/citations?user=JbZgLvMAAAAJ&hl=es" target="_blank" class="tl tl-gs" title="Google Scholar"><i class="fab fa-google"></i></a>
             <a href="https://www.linkedin.com/in/sarahamzamayora/" target="_blank" class="tl tl-li" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
@@ -605,7 +599,18 @@
         <div class="team-info">
           <div class="team-name">Agustín Cebe</div>
           <div class="team-role">Investigador predoctoral</div>
-          <div class="team-bio">Especialista en análisis territorial y gestión de espacios naturales protegidos.</div>
+          <div class="team-bio">Licenciado en Arqueología (Universidad Nacional de Tucumán). Doctorando en Estudios Latinoamericanos del Turismo y las movilidades (Universidad del Comahue). Investigador colaborador del Instituto de Ecología Regional – CONICET. Especialista en modelización de patrones de uso.</div>
+          <div class="team-links">
+            <a href="https://orcid.org/0009-0002-0922-1558" target="_blank" class="tl tl-oc" title="ORCID"><i class="fab fa-orcid"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="team-card fade-up">
+        <div class="team-photo" style="display:flex;align-items:center;justify-content:center;background:var(--g-light);color:var(--g-dark);font-family:'Jost',sans-serif;font-weight:700;font-size:1.5rem;">BA</div>
+        <div class="team-info">
+          <div class="team-name">Berta Aguirre Noguera</div>
+          <div class="team-role">Investigadora predoctoral</div>
+          <div class="team-bio">Doctoranda en Actividad Física y el Deporte y Máster en Gestión de Áreas de Montaña. Especialista en distribución espacial del riesgo de aludes.</div>
           <div class="team-links"></div>
         </div>
       </div>
@@ -614,7 +619,25 @@
         <div class="team-info">
           <div class="team-name">Ilargi López González</div>
           <div class="team-role">Colaboradora</div>
-          <div class="team-bio">Investigadora en el ámbito del uso público en espacios naturales protegidos.</div>
+          <div class="team-bio">Graduada en Ciencias de la Actividad Física y el Deporte (INEFC Lleida - UdL), MSc en Gestión de Áreas de Montaña. Secretaria Técnica de la Tabla Salut i Natura de l'Alt Pirineu i l'Aran.</div>
+          <div class="team-links"></div>
+        </div>
+      </div>
+      <div class="team-card fade-up">
+        <img src="Fotos_Equip/Foto_Fernanda-removebg-preview.webp" alt="María Fernanda González Alincastro" class="team-photo">
+        <div class="team-info">
+          <div class="team-name">María Fernanda González Alincastro</div>
+          <div class="team-role">Colaboradora</div>
+          <div class="team-bio">Licenciada en Derecho, Mediadora y Máster en Judicatura (Universidad Nacional de Tucumán). Especialista en igualdad de género.</div>
+          <div class="team-links"></div>
+        </div>
+      </div>
+      <div class="team-card fade-up">
+        <img src="Fotos_Equip/Foto_Sara_practicas-removebg-preview.webp" alt="Sara Barba Molins" class="team-photo">
+        <div class="team-info">
+          <div class="team-name">Sara Barba Molins</div>
+          <div class="team-role">Colaboradora en formación</div>
+          <div class="team-bio">Estudiante del Grado en Ciencias de la Actividad Física y el Deporte (INEFC Pirineus - UdL). Colaboradora en trabajos de campo.</div>
           <div class="team-links"></div>
         </div>
       </div>
@@ -857,7 +880,9 @@
         <i class="fab fa-instagram"></i><span data-i18n="ig.cta">Ver perfil</span>
       </a>
     </div>
-    <div class="ig-grid">
+  </div>
+  <div class="ig-marquee">
+    <div class="ig-track">
       <a href="https://www.instagram.com/ecodata_natura" target="_blank" class="ig-cell">
         <img src="Fotos-seleccionadas/1. Pasarla.webp" alt="EcoData Instagram">
         <div class="ig-over"><i class="fab fa-instagram"></i></div>
@@ -878,6 +903,51 @@
         <img src="Fotos-seleccionadas/Instrumentos/Impacto sociambiental eventos.webp" alt="EcoData Instagram">
         <div class="ig-over"><i class="fab fa-instagram"></i></div>
       </a>
+      <a href="https://www.instagram.com/ecodata_natura" target="_blank" class="ig-cell">
+        <img src="Fotos-seleccionadas/Uso publico/Cim Pedraforca 2.webp" alt="EcoData Instagram">
+        <div class="ig-over"><i class="fab fa-instagram"></i></div>
+      </a>
+      <a href="https://www.instagram.com/ecodata_natura" target="_blank" class="ig-cell">
+        <img src="Fotos-seleccionadas/Equipo/Carrera Puigverd equip.webp" alt="EcoData Instagram">
+        <div class="ig-over"><i class="fab fa-instagram"></i></div>
+      </a>
+      <a href="https://www.instagram.com/ecodata_natura" target="_blank" class="ig-cell">
+        <img src="Fotos-seleccionadas/Proceso participativo Montsant.webp" alt="EcoData Instagram">
+        <div class="ig-over"><i class="fab fa-instagram"></i></div>
+      </a>
+      <!-- Duplicate set for seamless loop -->
+      <a href="https://www.instagram.com/ecodata_natura" target="_blank" class="ig-cell" aria-hidden="true">
+        <img src="Fotos-seleccionadas/1. Pasarla.webp" alt="">
+        <div class="ig-over"><i class="fab fa-instagram"></i></div>
+      </a>
+      <a href="https://www.instagram.com/ecodata_natura" target="_blank" class="ig-cell" aria-hidden="true">
+        <img src="Fotos-seleccionadas/Equipo/Fotos MMV8 (4).webp" alt="">
+        <div class="ig-over"><i class="fab fa-instagram"></i></div>
+      </a>
+      <a href="https://www.instagram.com/ecodata_natura" target="_blank" class="ig-cell" aria-hidden="true">
+        <img src="Fotos-seleccionadas/Trabajos de campo/Formació TC CAP DE CREUS.webp" alt="">
+        <div class="ig-over"><i class="fab fa-instagram"></i></div>
+      </a>
+      <a href="https://www.instagram.com/ecodata_natura" target="_blank" class="ig-cell" aria-hidden="true">
+        <img src="Fotos-seleccionadas/Paisajes/Paisaje Montsant.webp" alt="">
+        <div class="ig-over"><i class="fab fa-instagram"></i></div>
+      </a>
+      <a href="https://www.instagram.com/ecodata_natura" target="_blank" class="ig-cell" aria-hidden="true">
+        <img src="Fotos-seleccionadas/Instrumentos/Impacto sociambiental eventos.webp" alt="">
+        <div class="ig-over"><i class="fab fa-instagram"></i></div>
+      </a>
+      <a href="https://www.instagram.com/ecodata_natura" target="_blank" class="ig-cell" aria-hidden="true">
+        <img src="Fotos-seleccionadas/Uso publico/Cim Pedraforca 2.webp" alt="">
+        <div class="ig-over"><i class="fab fa-instagram"></i></div>
+      </a>
+      <a href="https://www.instagram.com/ecodata_natura" target="_blank" class="ig-cell" aria-hidden="true">
+        <img src="Fotos-seleccionadas/Equipo/Carrera Puigverd equip.webp" alt="">
+        <div class="ig-over"><i class="fab fa-instagram"></i></div>
+      </a>
+      <a href="https://www.instagram.com/ecodata_natura" target="_blank" class="ig-cell" aria-hidden="true">
+        <img src="Fotos-seleccionadas/Proceso participativo Montsant.webp" alt="">
+        <div class="ig-over"><i class="fab fa-instagram"></i></div>
+      </a>
     </div>
   </div>
 </section>
@@ -892,7 +962,7 @@
         <p class="ci-desc" data-i18n="cnt.desc">Contacta con nosotros para solicitar más información o una propuesta de colaboración. Atendemos a instituciones públicas, técnicos de parques naturales, empresas del sector ambiental e investigadores.</p>
         <div class="ci-item">
           <div class="ci-icon"><i class="fas fa-map-marker-alt"></i></div>
-          <div class="ci-detail"><strong data-i18n="cnt.addr">Sede</strong><span>Espai CEEI · Lleida, Catalunya</span></div>
+          <div class="ci-detail"><strong data-i18n="cnt.addr">Sede</strong><span>Espai CEEI 2.7 · Lleida, Catalunya</span></div>
         </div>
         <div class="ci-item">
           <div class="ci-icon"><i class="fas fa-envelope"></i></div>
@@ -960,7 +1030,7 @@
     <div class="footer-grid">
       <div>
         <div class="footer-logo">
-          <img src="logo/Logo V blanco.png" alt="EcoData Natura" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+          <img src="logo/Petjada amb cercle.webp" alt="EcoData Natura" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
           <span style="display:none;font-family:'Jost',sans-serif;font-weight:700;color:#fff;font-size:1rem;">EcoData Natura S.L.P.</span>
         </div>
         <p class="footer-brand-text" data-i18n="foot.brand">Investigación aplicada para la gestión del uso público en espacios naturales protegidos.<br>Spin-off del INEFC · Lleida, 2024.</p>
@@ -971,7 +1041,6 @@
           <a href="https://www.linkedin.com/company/ecodata-natura" target="_blank" class="soc-btn" title="LinkedIn">
             <svg viewBox="0 0 24 24" fill="currentColor" width="1em" height="1em" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
           </a>
-          <a href="https://www.researchgate.net" target="_blank" class="soc-btn" title="ResearchGate"><i class="fas fa-graduation-cap"></i></a>
         </div>
       </div>
       <div class="footer-col">
@@ -1003,12 +1072,6 @@
           <li><a href="legal.html#privacidad" target="_blank" data-i18n="foot.privacy">Política de privacidad</a></li>
           <li><a href="legal.html#cookies" target="_blank" data-i18n="foot.cookies">Política de cookies</a></li>
           <li><a href="legal.html#aviso-legal" target="_blank" data-i18n="foot.notice">Aviso legal</a></li>
-        </ul>
-        <h4 style="margin-top:1.4rem;" data-i18n="foot.linked">Vinculados a</h4>
-        <ul>
-          <li><a href="https://www.inefc.cat" target="_blank">INEFC Lleida</a></li>
-          <li><a href="https://www.udl.cat" target="_blank">Universitat de Lleida</a></li>
-          <li><a href="#">Grupo GISEAFE</a></li>
         </ul>
       </div>
     </div>
